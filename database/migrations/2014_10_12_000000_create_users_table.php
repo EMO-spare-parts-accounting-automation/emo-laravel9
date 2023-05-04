@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
+
+        #her yeni kayıt olanın default müşteri olduğu tablo oluşturuldu
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('userType')->default('customer');
             $table->rememberToken();
             $table->timestamps();
         });

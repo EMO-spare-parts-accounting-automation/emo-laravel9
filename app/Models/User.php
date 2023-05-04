@@ -17,10 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'userType',                 #girenin admin mi müşteri mi diye kontrolü için tabloya userType sutunu eklendi
     ];
 
     /**
