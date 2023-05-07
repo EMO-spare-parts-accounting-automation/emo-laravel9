@@ -17,5 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin/products')->group(function () {
+    Route::controller(\App\Http\Controllers\ProductsController::class)->group(function () {
+        Route::get('create', 'create')->name('admin.products.create');
+        Route::post('store', 'store')->name('admin.products.store');
+        Route::put('update/{product}', 'update')->name('admin.products.update');
+        Route::delete('delete/{product}', 'destroy')->name('admin.products.destroy');
+        Route::get('index', 'index')->name('admin.products.index');
+        Route::get('edit/{product}', 'edit')->name('admin.products.edit');
+        //Route::get('show/{product}', 'show')->name('admin.products.show');
+    });
+});
