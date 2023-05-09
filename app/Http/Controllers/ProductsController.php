@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class ProductsController extends Controller
 {
@@ -14,8 +15,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('admin.products.index', compact('products'));
+        $products = Product::all();
+        $hasProduct=$products->isEmpty();
+        return view('admin.products.index', compact('products','hasProduct'));
     }
 
     /**
@@ -40,11 +42,11 @@ class ProductsController extends Controller
         $product->brand = $request->brand;
         $product->name = $request->name;
         $product->cost = $request->cost;
-        $product->sanliurfa = $request->sanliurfa ;
-        $product->hatay = $request->hatay ;
-        $product->maras = $request->maras ;
+        $product->sanliurfa = $request->sanliurfa;
+        $product->hatay = $request->hatay;
+        $product->maras = $request->maras;
         $product->costKdV = $request->cost * 1.18;
-        $product->listCost =$product->costKdV * 1.10;
+        $product->listCost = $product->costKdV * 1.10;
         $product->stock = $request->stock;
         $product->save();
         return redirect('admin/products/index');
@@ -69,8 +71,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product=Product::all()->find($id);
-        return view('admin.products.edit',compact('product'));
+        $product = Product::all()->find($id);
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -86,11 +88,11 @@ class ProductsController extends Controller
         $product->brand = $request->brand;
         $product->name = $request->name;
         $product->cost = $request->cost;
-        $product->sanliurfa = $request->sanliurfa ;
-        $product->hatay = $request->hatay ;
-        $product->maras = $request->maras ;
+        $product->sanliurfa = $request->sanliurfa;
+        $product->hatay = $request->hatay;
+        $product->maras = $request->maras;
         $product->costKdV = $request->cost * 1.18;
-        $product->listCost =$product->costKdV * 1.10;
+        $product->listCost = $product->costKdV * 1.10;
         $product->stock = $request->stock;
         $product->save();
         return redirect('admin/products/index');
