@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
+
 
 class ProductsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +17,8 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        $hasProduct=$products->isEmpty();
-        return view('admin.products.index', compact('products','hasProduct'));
+        $hasProduct = $products->isEmpty();
+        return view('admin.products.index', compact('products', 'hasProduct'));
     }
 
     /**
@@ -28,6 +29,16 @@ class ProductsController extends Controller
     public function create()
     {
         return view('admin.products.create');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->search;
+        $products = Product::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('brand', 'LIKE', '%' . $query . '%')
+            ->get();
+        $hasProduct = $products->isEmpty();
+        return view('admin.products.index', compact('products', 'hasProduct'));
     }
 
     /**
