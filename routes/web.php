@@ -28,5 +28,6 @@ Route::prefix('admin/products')->group(function () {
         Route::get('index', 'index')->name('admin.products.index');
         Route::get('edit/{product}', 'edit')->name('admin.products.edit');
         //Route::get('show/{product}', 'show')->name('admin.products.show');
+        Route::get('search', [\App\Http\Controllers\ProductsController::class, 'search'])->name('admin.products.search');
     });
 });

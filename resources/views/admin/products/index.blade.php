@@ -4,6 +4,10 @@
        <center>Ürün Yok</center>
 
     @else
+        <form method="GET" action="{{route('admin.products.search')}}" >
+        <input type="search" name="search" value="" placeholder="Parça ara" >
+            <input type="submit"  value="Ara"  >
+        </form>
         <table style="width: 70%">
             <tr>
                 <td>ID</td>
