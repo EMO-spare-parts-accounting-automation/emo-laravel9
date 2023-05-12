@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
     @if($hasProduct)
-       <center>Ürün Yok</center>
+        <h3 style="text-align: center;vertical-align:middle">Ürün Bulunamadı</h3>
 
     @else
-        <form method="GET" action="{{route('admin.products.search')}}" >
-        <input type="search" name="search" value="" placeholder="Parça ara" >
-            <input type="submit"  value="Ara"  >
+        <form method="GET" action="{{route('admin.products.search')}}">
+            <input type="search" name="search" value="" placeholder="Parça ara">
+            <input type="submit" value="Ara">
         </form>
         <table style="width: 70%">
             <tr>
