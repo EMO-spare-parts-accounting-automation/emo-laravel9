@@ -13,9 +13,7 @@
                 <td>ID</td>
                 <td>Marka</td>
                 <td>İsim</td>
-                <td>Alış</td>
-                <td>KDV'li</td>
-                <td>Liste Fiyatı</td>
+                <td>Fiyat</td>
                 <td>Urfa</td>
                 <td>Hatay</td>
                 <td>Maras</td>
@@ -28,8 +26,6 @@
                     <td>{{$product['id']}}</td>
                     <td>{{$product['brand']}}</td>
                     <td>{{$product['name']}}</td>
-                    <td>{{$product['cost']}}</td>
-                    <td>{{$product['costKDV']}}</td>
                     <td>{{$product['listCost']}}</td>
                     <td>{{$product['sanliurfa']}}</td>
                     <td>{{$product['hatay']}}</td>
