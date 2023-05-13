@@ -31,3 +31,11 @@ Route::prefix('admin/products')->group(function () {
         Route::get('search', [\App\Http\Controllers\ProductsController::class, 'search'])->name('admin.products.search');
     });
 });
+
+
+Route::prefix('/admin')->group(function (){
+    Route::get('customerlist',[\App\Http\Controllers\CustListController::class,'index'])->name('admin.customerlist');
+    Route::delete('delete/{id}',[\App\Http\Controllers\CustListController::class,'destroy'])->name('admin.customerlist.destroy');
+    Route::get('yetki/{id}',[\App\Http\Controllers\CustListController::class,'yetki'])->name('admin.customerlist.yetki');
+    Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
+});
