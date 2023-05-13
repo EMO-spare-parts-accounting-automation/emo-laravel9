@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductsController extends Controller
@@ -24,7 +26,11 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         $hasProduct = $products->isEmpty();
-        return view('admin.products.index', compact('products', 'hasProduct'));
+        $user=Auth::user();
+        if($user->userType=='admin')
+            return view('admin.products.index', compact('products', 'hasProduct'));
+        else
+            return view('customer.products.index', compact('products', 'hasProduct'));
     }
 
     /**
@@ -44,7 +50,11 @@ class ProductsController extends Controller
             ->orWhere('brand', 'LIKE', '%' . $query . '%')
             ->get();
         $hasProduct = $products->isEmpty();
-        return view('admin.products.index', compact('products', 'hasProduct'));
+        $user=Auth::user();
+        if($user->userType=='admin')
+            return view('admin.products.index', compact('products', 'hasProduct'));
+        else
+            return view('customer.products.index', compact('products', 'hasProduct'));
     }
 
     /**

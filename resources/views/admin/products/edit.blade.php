@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('content')
     <h2 style="text-align: center">Düzenle</h2>
     <div class="form">
@@ -24,8 +24,8 @@
             </fieldset>
             <fieldset>
                 <legend>Şanlıurfa</legend>
-                    Var<input type="radio" name="sanliurfa" value="var" @if($product->sanliurfa=="var")checked @endif><br>
-                    Yok<input type="radio" name="sanliurfa" value="yok" @if($product->sanliurfa=="yok")checked @endif><br>
+                Var<input type="radio" name="sanliurfa" value="var" @if($product->sanliurfa=="var")checked @endif><br>
+                Yok<input type="radio" name="sanliurfa" value="yok" @if($product->sanliurfa=="yok")checked @endif><br>
             </fieldset>
             <fieldset>
                 <legend>Hatay</legend>
