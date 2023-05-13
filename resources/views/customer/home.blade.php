@@ -1,7 +1,6 @@
-
 <!--burdan itibaren admin sayfa düzenlemeleri admin klasöründe olmak şartıyla yapılabilir-->
 
-@extends('layouts.app')
+@extends('layouts.customer.customer')
 
 @section('content')
     <div class="container">
@@ -16,7 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                            <center><h1>SAYIN {{$user->name}} HOŞGELDİN!</h1></center>   <!--ismi ile karşılama mesajı-->
+                        <center><h1>SAYIN {{$user->name}} HOŞGELDİN!</h1></center>   <!--ismi ile karşılama mesajı-->
                         {{ __('You are logged customer!') }}
                     </div>
                 </div>

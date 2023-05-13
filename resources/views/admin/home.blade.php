@@ -1,8 +1,6 @@
-
-
 <!--burdan itibaren admin sayfa düzenlemeleri admin klasöründe olmak şartıyla yapılabilir-->
 
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('content')
     <h2 style="text-align: center">Ürün Ekle</h2>
     <div class="form">
@@ -14,10 +14,10 @@
                 <input type="text" name="name" placeholder="İsim" autofous required><br>
             </fieldset>
             <fieldset>
-            <fieldset>
-                <legend>Geliş Fiyatı</legend>
-                <input type="text" name="cost" placeholder="Fiyat" maxlength="15" autofous required><br>
-            </fieldset>
+                <fieldset>
+                    <legend>Geliş Fiyatı</legend>
+                    <input type="text" name="cost" placeholder="Fiyat" maxlength="15" autofous required><br>
+                </fieldset>
                 <legend>Şanlıurfa</legend>
                 Var<input type="radio" name="sanliurfa" value="var"><br>
                 Yok<input type="radio" name="sanliurfa" value="yok" checked><br>

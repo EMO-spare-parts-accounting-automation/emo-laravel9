@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -13,17 +13,13 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!--#tüm sayfalarda geçerli arkaplan oluşturuldu(layout aracılığıyla)! -->
+
     <style>
         body {
-
             background-repeat: no-repeat;
             background-position:top center;
             background-attachment:fixed ;
             background-size:1000px;
-
-
-
             font-family: 'Nunito', sans-serif;
 
         }
@@ -32,30 +28,18 @@
 
 </head>
 <body>
-<!--#içerik kodları auth(login) koduyla otomatik gelmiştir bu kodlarda değiştirme yapmayın! -->
+
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('admin.products.index') }}">
+            <a class="navbar-brand" href="{{ route('customer.products.index') }}">
                 Parça Ara
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}"> <!-- buradaki herf parametresini kullanıp siparişler blade sini tanımlayın   -->
-                Siparişler
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.products.create') }}">
-                Ürün Ekle
+            <a class="navbar-brand" href="{{ url('/') }}">
+                Siparişlerim
             </a>
             <a class="navbar-brand" href="{{ url('/') }}">
-                İletişim
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                İadeler
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Kampanyalar
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Müşteriler
+                Sepet
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
