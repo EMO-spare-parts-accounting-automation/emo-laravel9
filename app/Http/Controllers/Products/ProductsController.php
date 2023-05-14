@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','role:admin']);
     }
 
 
@@ -26,11 +26,8 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         $hasProduct = $products->isEmpty();
-        $user=Auth::user();
-        if($user->userType=='admin')
-            return view('admin.products.index', compact('products', 'hasProduct'));
-        else
-            return view('customer.products.index', compact('products', 'hasProduct'));
+        return view('admin.products.index', compact('products', 'hasProduct'));
+
     }
 
     /**
@@ -50,11 +47,7 @@ class ProductsController extends Controller
             ->orWhere('brand', 'LIKE', '%' . $query . '%')
             ->get();
         $hasProduct = $products->isEmpty();
-        $user=Auth::user();
-        if($user->userType=='admin')
-            return view('admin.products.index', compact('products', 'hasProduct'));
-        else
-            return view('customer.products.index', compact('products', 'hasProduct'));
+        return view('admin.products.index', compact('products', 'hasProduct'));
     }
 
     /**

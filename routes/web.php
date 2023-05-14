@@ -32,7 +32,7 @@ Route::prefix('admin/products')->group(function () {
     });
 });
 Route::prefix('customer/products')->group(function () {
-    Route::controller(\App\Http\Controllers\Products\ProductsController::class)->group(function () {
+    Route::controller(\App\Http\Controllers\customer\CustomerController::class)->group(function () {
 
         Route::get('index', 'index')->name('customer.products.index');
         Route::get('search', 'search')->name('customer.products.search');
