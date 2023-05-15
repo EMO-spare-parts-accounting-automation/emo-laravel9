@@ -19,7 +19,7 @@ class CustListController extends Controller
         $isempty=$users->isEmpty();
         return view('admin.custList',compact('users','myaccount','isempty'));
     }
-    public function yetki($id){
+    public function authority($id){
         $userUpdate=User::query()->find($id);
         if($userUpdate->userType==='admin'){
             $userUpdate->userType='customer';
