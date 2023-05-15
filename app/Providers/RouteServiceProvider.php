@@ -17,7 +17,18 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
+    public function redirectTo() {
+        if (auth()->user()->userType == "admin") {
+            return route("admin.products.index");
+        }
+
+        else {
+            return  route("customer.products.index");
+        }
+
+        return redirect("home");
+    }
 
     /**
      * The controller namespace for the application.

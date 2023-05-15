@@ -32,7 +32,7 @@ Route::prefix('admin/products')->group(function () {
     });
 });
 Route::prefix('customer/products')->group(function () {
-    Route::controller(\App\Http\Controllers\Products\ProductsController::class)->group(function () {
+    Route::controller(\App\Http\Controllers\customer\CustomerController::class)->group(function () {
 
         Route::get('index', 'index')->name('customer.products.index');
         Route::get('search', 'search')->name('customer.products.search');
@@ -43,6 +43,6 @@ Route::prefix('customer/products')->group(function () {
 Route::prefix('/admin')->group(function (){
     Route::get('customerlist',[\App\Http\Controllers\CustListController::class,'index'])->name('admin.customerlist');
     Route::delete('delete/{id}',[\App\Http\Controllers\CustListController::class,'destroy'])->name('admin.customerlist.destroy');
-    Route::get('yetki/{id}',[\App\Http\Controllers\CustListController::class,'yetki'])->name('admin.customerlist.yetki');
+    Route::get('authority/{id}',[\App\Http\Controllers\CustListController::class,'authority'])->name('admin.customerlist.authority');
     Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
 });
