@@ -5,10 +5,10 @@
 
 <h1>İletişim Formu</h1>
 
-<form name="">
-
+<form method="POST" action="{{route('admin.contacts.store')}}">
+        @csrf
     <h2> İletişim için aşağıdaki bilgileri giriniz</h2>
-    <table >
+    <table>
 
         <tr>
             <td>Adınız: </td>

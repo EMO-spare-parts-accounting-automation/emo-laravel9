@@ -46,3 +46,15 @@ Route::prefix('/admin')->group(function (){
     Route::get('authority/{id}',[\App\Http\Controllers\CustListController::class,'authority'])->name('admin.customerlist.authority');
     Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
 });
+Route::prefix('admin/contacts')->group(function () {
+    Route::controller(\App\Http\Controllers\ContactsController::class)->group(function () {
+        Route::get('create', 'create')->name('admin.contacts.create');
+        Route::post('store', 'store')->name('admin.contacts.store');
+        //Route::put('update/{product}', 'update')->name('admin.products.update');
+        //Route::delete('delete/{product}', 'destroy')->name('admin.products.destroy');
+        //Route::get('index', 'index')->name('admin.products.index');
+        //Route::get('edit/{product}', 'edit')->name('admin.products.edit');
+        //Route::get('show/{product}', 'show')->name('admin.products.show');
+
+    });
+});
