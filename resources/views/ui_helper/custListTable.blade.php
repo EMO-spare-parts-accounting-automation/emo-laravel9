@@ -40,10 +40,10 @@
                             <button type="submit" style="color: white;background-color: green">AKTİF KULLANICI</button>
                         </form>
                     @elseif($user->userType==='customer')
-                        @include('ui_helper.updateButton',['route'=>route('admin.customerlist.yetki',$user->id),
+                        @include('ui_helper.updateButton',['route'=>route('admin.customerlist.authority',$user->id),
                             'text'=>'Yetkilendir!','bgColor'=>"#0000ff" ,'textColor'=>"#ffffff"])
                     @elseif($user->userType==='admin')
-                        @include('ui_helper.updateButton',['route'=>route('admin.customerlist.yetki',$user->id),
+                        @include('ui_helper.updateButton',['route'=>route('admin.customerlist.authority',$user->id),
                             'text'=>'Yetkisini Al!','bgColor'=>"#0000ff" ,'textColor'=>"#ffffff"])
                     @endif
                 </td>

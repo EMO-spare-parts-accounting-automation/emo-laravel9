@@ -23,7 +23,7 @@
                                     <label class="col-md-4 col-form-label ">İsim</label>
                                     <div class="col-md-9">
                                         <input type="text" value="{{$isim}}" class=form-control name="name"
-                                               placeholder="İsim" autofous required>
+                                               placeholder="İsim" autofous required>php a
                                     </div>
                                 </fieldset>
                             </div>
