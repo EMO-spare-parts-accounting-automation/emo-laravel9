@@ -46,3 +46,17 @@ Route::prefix('/admin')->group(function (){
     Route::get('authority/{id}',[\App\Http\Controllers\CustListController::class,'authority'])->name('admin.customerlist.authority');
     Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
 });
+
+Route::prefix('/customer')->group(function (){
+    Route::get('payment', function (){
+        return view('customer.payment.payment');
+    })->name('customer.payment')->middleware(['auth','role:customer']);
+
+    Route::get('payment/credit', function (){
+        return view('customer.payment.credit');
+    })->name('customer.payment.credit')->middleware(['auth','role:customer']);
+
+    Route::get('payment/transfer',function (){
+        return view('customer.payment.transfer');
+    })->name('customer.payment.transfer')->middleware(['auth','role:customer']);
+});
