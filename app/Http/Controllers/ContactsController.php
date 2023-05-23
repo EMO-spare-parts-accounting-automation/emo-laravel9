@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:admin']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        //
+        $contacts=Contact::all();
+        $hasContact=$contacts->isEmpty();
+        return view('admin.contacts.index',compact('contacts','hasContact'));
     }
 
     /**
@@ -42,7 +51,7 @@ class ContactsController extends Controller
         $contact->phone=$request->phone;
         $contact->city=$request->city;
         $contact->save();
-        return redirect('admin/contacts/create');
+        return redirect('admin/contacts/index');
     }
 
     /**
@@ -64,7 +73,8 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact=Contact::all()->find($id);
+        return view('admin.contact.edit',compact('contact'));
     }
 
     /**
@@ -76,7 +86,14 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact=Contact::all()->find($id);
+        $contact->name=$request->name;
+        $contact->surname=$request->surname;
+        $contact->mail=$request->mail;
+        $contact->phone=$request->phone;
+        $contact->city=$request->city;
+        $contact->save();
+        return redirect('admin/contacts/index');
     }
 
     /**
@@ -87,6 +104,8 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::destroy($id);
+        return redirect('admin/contacts/index');
+
     }
 }
