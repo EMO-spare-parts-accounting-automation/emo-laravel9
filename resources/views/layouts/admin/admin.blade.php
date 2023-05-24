@@ -45,7 +45,7 @@
             <a class="navbar-brand" href="{{ route('admin.products.create') }}">
                 Ürün Ekle
             </a>
-            <a class="navbar-brand" href="{{ route('admin.contacts.create') }}">
+            <a class="navbar-brand" href="{{ route('admin.contacts.index') }}">
                 İletişim
             </a>
             <a class="navbar-brand" href="{{ url('/') }}">
