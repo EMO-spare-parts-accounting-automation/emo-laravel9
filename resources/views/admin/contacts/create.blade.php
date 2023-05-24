@@ -53,9 +53,9 @@
                                         <legend class="col-md-4 col-form-label">Şehir</legend>
                                         <div class="col-md-6">
                                             <select id="" name="city" required>
-                                                <option value="sanliurfa">Şanlıurfa</option>
-                                                <option value="hatay">Hatay</option>
-                                                <option value="kahramanmaras">Kahramanmaraş</option>
+                                                <option value="Sanliurfa">Şanlıurfa</option>
+                                                <option value="Hatay">Hatay</option>
+                                                <option value="Kahramanmaras">Kahramanmaraş</option>
                                             </select>
                                         </div>
                                     </fieldset>
