@@ -74,7 +74,7 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $contact=Contact::all()->find($id);
-        return view('admin.contact.edit',compact('contact'));
+        return view('admin.contacts.edit',compact('contact'));
     }
 
     /**

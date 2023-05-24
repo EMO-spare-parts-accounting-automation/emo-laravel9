@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 @section('content')
- <html>
+    <html>
     <head>
 
         <style>
@@ -32,7 +32,7 @@
                 animation: animate_border .75s linear infinite;
             }
 
-            .button span{
+            .button span {
                 display: block;
                 background-color: #0e0872;
                 padding: 13px 20px;
@@ -48,34 +48,37 @@
             }
         </style>
 
-     </head>
-     <body>
-        <div style="position: relative;left: 85%">
-            <a href="{{route('admin.contacts.create')}}" class="button">
-                <span>+ Yeni iletişim ekle</span>
-            </a>
-        </div>
-         <center>
-             <table style="width: 70%">
-                 <tr>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+    </head>
+    <body>
+    <div style="position: relative;left: 85%">
+        <a href="{{route('admin.contacts.create')}}" class="button">
+            <span>+ Yeni iletişim ekle</span>
+        </a>
+    </div>
+    <center>
+        <table style="width: 70%">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
 
-                 </tr>
+            </tr>
 
-                 @foreach($contacts as $contact)
-                     @if(($contact->id)%3==1||($contact->id)==1)
-                         <tr>
-                             @endif
-                             <td>
-                                 <div class="container" style="padding: 0px;margin: 0px">
-                                     <div class="row justify-content-center" style="padding: 0px;margin: 0px">
-                                         <div class="col-md-8" style="width: 470px;height: 300px ;padding: 20px;margin: 0px">
-                                             <div class="card" style="width: 450px;height: 250px;padding: 0px;">
-                                                 <div class="card-header">{{ $contact->name }} {{$contact->surname}}</div>
+            @foreach($contacts as $contact)
+                @if(($contact->id)%3==1||($contact->id)==1)
+                    <tr>
+                        @endif
+                        <td>
+                            <div class="container" style="padding: 0px;margin: 0px">
+                                <div class="row justify-content-center" style="padding: 0px;margin: 0px">
+                                    <div class="col-md-8" style="width: 470px;height: 300px ;padding: 20px;margin: 0px">
+                                        <div class="card" style="width: 450px;height: 250px;padding: 0px;">
+                                            <button style="border: none"
+                                                    onclick=window.location.href="{{route('admin.contacts.edit',$contact->id)}}">
+                                                <div
+                                                    class="card-header">{{ $contact->name }} {{$contact->surname}}</div>
 
-                                                 <div class="card-body" style="background-size: cover;background-repeat: no-repeat; background-image:
+                                                <div class="card-body" style="background-size: cover;background-repeat: no-repeat; background-image:
                                                 @if($contact->city==='sanliurfa')
                                                 url(https://www.shutterstock.com/image-photo/balikligol-fish-lake-sanliurfa-city-260nw-1372544012.jpg)
                                                 @elseif($contact->city==='hatay')
@@ -83,47 +86,52 @@
                                                 @elseif($contact->city==='kahramanmaras')
                                                 url(https://media-cdn.tripadvisor.com/media/photo-s/06/b0/19/bc/kahramanmaras-kalesi.jpg)
                                                 @endif">
-                                                     <div class="row mb-3">
-                                                         <label class="col-md-3 col-form-label text-md-end" style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('E-mail:') }}</strong></b></label>
+                                                    <div class="row mb-3">
+                                                        <label class="col-md-3 col-form-label text-md-end"
+                                                               style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('E-mail:') }}</strong></b></label>
 
-                                                         <div class="col-md-9" style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
-                                                             <b><strong>{{$contact->mail}}</strong></b>
-                                                         </div>
-                                                     </div>
+                                                        <div class="col-md-9"
+                                                             style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
+                                                            <b><strong>{{$contact->mail}}</strong></b>
+                                                        </div>
+                                                    </div>
 
-                                                     <div class="row mb-3">
-                                                         <label class="col-md-3 col-form-label text-md-end" style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('Telefon:') }}</strong></b></label>
+                                                    <div class="row mb-3">
+                                                        <label class="col-md-3 col-form-label text-md-end"
+                                                               style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('Telefon:') }}</strong></b></label>
 
-                                                         <div class="col-md-6" style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
-                                                             <b><strong>{{$contact->phone}}</strong></b>
-                                                         </div>
-                                                     </div>
-                                                     <div class="row mb-3">
-                                                         <label class="col-md-3 col-form-label text-md-end" style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('Şehir:') }}</strong></b></label>
+                                                        <div class="col-md-6"
+                                                             style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
+                                                            <b><strong>{{$contact->phone}}</strong></b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label class="col-md-3 col-form-label text-md-end"
+                                                               style="font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white"><b><strong>{{ __('Şehir:') }}</strong></b></label>
 
-                                                         <div class="col-md-6" style=" font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
-                                                             <b><strong>{{$contact->city}}</strong></b>
-                                                         </div>
-                                                     </div>
+                                                        <div class="col-md-6"
+                                                             style=" font-size: 18px;font-family: Verdana;-webkit-text-stroke: 1px #0e0872; color: white;padding-top: 7px">
+                                                            <b><strong>{{$contact->city}}</strong></b>
+                                                        </div>
 
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </td>
-                         @if(($contact->id)%3==0)
-                             <tr>
-                         @endif
-                         @endforeach
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-
-             </table>
-         </center>
-     </body>
- </html>
-
+                        </td>
+                    @if(($contact->id)%3==0)
+                        <tr>
+                    @endif
+                    @endforeach
 
 
+        </table>
+    </center>
+    </body>
+    </html>
 
 @endsection

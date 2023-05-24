@@ -52,10 +52,10 @@ Route::prefix('admin/contacts')->group(function () {
     Route::controller(\App\Http\Controllers\ContactsController::class)->group(function () {
         Route::get('create', 'create')->name('admin.contacts.create');
         Route::post('store', 'store')->name('admin.contacts.store');
-        //Route::put('update/{contact}', 'update')->name('admin.contacts.update');
-        //Route::delete('delete/{contact}', 'destroy')->name('admin.contacts.destroy');
+        Route::put('update/{contact}', 'update')->name('admin.contacts.update');
+        Route::delete('delete/{contact}', 'destroy')->name('admin.contacts.destroy');
         Route::get('index', 'index')->name('admin.contacts.index');
-        //Route::get('edit/{contact}', 'edit')->name('admin.contacts.edit');
+        Route::get('edit/{contact}', 'edit')->name('admin.contacts.edit');
         //Route::get('show/{contact}', 'show')->name('admin.contacts.show');
 
     });
