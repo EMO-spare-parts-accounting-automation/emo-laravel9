@@ -59,14 +59,14 @@
                                         <div class="col-md-6">
                                             <select name="city" required>
                                                 <option value="Sanliurfa"
-                                                        @if($contact->city="Sanliurfa")selected @endif>Şanlıurfa
+                                                        @if($contact->city=="Sanliurfa")selected @endif>Şanlıurfa
                                                 </option>
                                                 <option value="Hatay"
-                                                        @if($contact->city="Hatay")selected @endif> Hatay
+                                                        @if($contact->city=="Hatay")selected @endif> Hatay
 
                                                 </option>
                                                 <option value="Kahramanmaras"
-                                                        @if($contact->city="Kahramanmaras")selected @endif>Kahramanmaraş
+                                                        @if($contact->city=="Kahramanmaras")selected @endif>Kahramanmaraş
                                                 </option>
                                             </select>
                                         </div>
