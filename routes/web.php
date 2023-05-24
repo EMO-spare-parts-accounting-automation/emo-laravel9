@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,23 +41,38 @@ Route::prefix('customer/products')->group(function () {
 });
 
 
-Route::prefix('/admin')->group(function (){
-    Route::get('customerlist',[\App\Http\Controllers\CustListController::class,'index'])->name('admin.customerlist');
-    Route::delete('delete/{id}',[\App\Http\Controllers\CustListController::class,'destroy'])->name('admin.customerlist.destroy');
-    Route::get('authority/{id}',[\App\Http\Controllers\CustListController::class,'authority'])->name('admin.customerlist.authority');
-    Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
+Route::prefix('/admin')->group(function () {
+    Route::get('customerlist', [\App\Http\Controllers\CustListController::class, 'index'])->name('admin.customerlist');
+    Route::delete('delete/{id}', [\App\Http\Controllers\CustListController::class, 'destroy'])->name('admin.customerlist.destroy');
+    Route::get('authority/{id}', [\App\Http\Controllers\CustListController::class, 'authority'])->name('admin.customerlist.authority');
+    Route::get('search', [\App\Http\Controllers\CustListController::class, 'search'])->name('admin.customerlist.search');
 });
 
-Route::prefix('/customer')->group(function (){
-    Route::get('payment', function (){
+Route::prefix('admin/contacts')->group(function () {
+    Route::controller(\App\Http\Controllers\ContactsController::class)->group(function () {
+        Route::get('create', 'create')->name('admin.contacts.create');
+        Route::post('store', 'store')->name('admin.contacts.store');
+        //Route::put('update/{contact}', 'update')->name('admin.contacts.update');
+        //Route::delete('delete/{contact}', 'destroy')->name('admin.contacts.destroy');
+        Route::get('index', 'index')->name('admin.contacts.index');
+        //Route::get('edit/{contact}', 'edit')->name('admin.contacts.edit');
+        //Route::get('show/{contact}', 'show')->name('admin.contacts.show');
+
+    });
+});
+
+
+Route::prefix('/customer')->group(function () {
+    Route::get('payment', function () {
         return view('customer.payment.payment');
-    })->name('customer.payment')->middleware(['auth','role:customer']);
+    })->name('customer.payment')->middleware(['auth', 'role:customer']);
 
-    Route::get('payment/credit', function (){
+    Route::get('payment/credit', function () {
         return view('customer.payment.credit');
-    })->name('customer.payment.credit')->middleware(['auth','role:customer']);
+    })->name('customer.payment.credit')->middleware(['auth', 'role:customer']);
 
-    Route::get('payment/transfer',function (){
+    Route::get('payment/transfer', function () {
         return view('customer.payment.transfer');
-    })->name('customer.payment.transfer')->middleware(['auth','role:customer']);
+    })->name('customer.payment.transfer')->middleware(['auth', 'role:customer']);
+
 });
