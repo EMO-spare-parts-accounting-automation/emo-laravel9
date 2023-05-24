@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,12 +41,13 @@ Route::prefix('customer/products')->group(function () {
 });
 
 
-Route::prefix('/admin')->group(function (){
-    Route::get('customerlist',[\App\Http\Controllers\CustListController::class,'index'])->name('admin.customerlist');
-    Route::delete('delete/{id}',[\App\Http\Controllers\CustListController::class,'destroy'])->name('admin.customerlist.destroy');
-    Route::get('authority/{id}',[\App\Http\Controllers\CustListController::class,'authority'])->name('admin.customerlist.authority');
-    Route::get('search',[\App\Http\Controllers\CustListController::class,'search'])->name('admin.customerlist.search');
+Route::prefix('/admin')->group(function () {
+    Route::get('customerlist', [\App\Http\Controllers\CustListController::class, 'index'])->name('admin.customerlist');
+    Route::delete('delete/{id}', [\App\Http\Controllers\CustListController::class, 'destroy'])->name('admin.customerlist.destroy');
+    Route::get('authority/{id}', [\App\Http\Controllers\CustListController::class, 'authority'])->name('admin.customerlist.authority');
+    Route::get('search', [\App\Http\Controllers\CustListController::class, 'search'])->name('admin.customerlist.search');
 });
+
 Route::prefix('admin/contacts')->group(function () {
     Route::controller(\App\Http\Controllers\ContactsController::class)->group(function () {
         Route::get('create', 'create')->name('admin.contacts.create');
@@ -57,4 +59,20 @@ Route::prefix('admin/contacts')->group(function () {
         //Route::get('show/{contact}', 'show')->name('admin.contacts.show');
 
     });
+});
+
+
+Route::prefix('/customer')->group(function () {
+    Route::get('payment', function () {
+        return view('customer.payment.payment');
+    })->name('customer.payment')->middleware(['auth', 'role:customer']);
+
+    Route::get('payment/credit', function () {
+        return view('customer.payment.credit');
+    })->name('customer.payment.credit')->middleware(['auth', 'role:customer']);
+
+    Route::get('payment/transfer', function () {
+        return view('customer.payment.transfer');
+    })->name('customer.payment.transfer')->middleware(['auth', 'role:customer']);
+
 });
