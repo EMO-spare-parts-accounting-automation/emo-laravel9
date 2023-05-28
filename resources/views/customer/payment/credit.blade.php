@@ -69,10 +69,11 @@
             <div class="col-sm-12">
                 <div class="card mx-auto">
                     <h1><p class="heading">Kredi/Banka kartı</p></h1>
-                    <form class="card-details ">
+                    <form class="card-details " action="{{route('admin.payments.addbalance')}}" method="POST">
+                        @csrf
                         <div class="form-group mb-0">
                             <p class="text-warning mb-0">Kart No:</p>
-                            <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="17" id="cno" minlength="19" maxlength="19" required>
+                            <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="16" id="cno" minlength="16" maxlength="16" required>
                             <img src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
                         </div>
 
@@ -83,16 +84,16 @@
                             <div class="row d-flex">
                                 <div class="col-sm-4">
                                     <p class="text-warning mb-0">Son Kullanım Tarihi:</p>
-                                    <input type="text" name="exp" placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" required>
+                                    <input type="text" name="exp" placeholder="MM/YYYY" size="7" id="exp" minlength="5" maxlength="7" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <p class="text-warning mb-0">Cvv</p>
-                                    <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" required>
+                                    <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="3" minlength="3" maxlength="3" required>
                                 </div>
                             </div>
                         </div><br>
                         <div class="form-group">
-                            <p class="text-warning mb-0">Yüklenecek Tutar:</p> <input type="number" step=".01" name="name" placeholder="ödenecek tutar" size="17" required>
+                            <p class="text-warning mb-0">Yüklenecek Tutar:</p> <input type="number" step=".01" name="balance" placeholder="ödenecek tutar" size="17" required>
                         </div><br>
                         <div class="col-sm-5 pt-0">
                             <button type="submit" style="position: relative;right: -180px" class="btn btn-primary"><i class="fas fa-arrow-right px-3 py-2">Öde</i></button>

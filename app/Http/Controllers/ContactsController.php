@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
@@ -22,9 +23,17 @@ class ContactsController extends Controller
     public function index()
     {
         $contacts=Contact::all();
+        $i=1;
+        foreach ($contacts as $contact){
+            $contact->id=$i;
+            $i=$i+1;
+            $contact->save();
+        }
         $hasContact=$contacts->isEmpty();
         return view('admin.contacts.index',compact('contacts','hasContact'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
