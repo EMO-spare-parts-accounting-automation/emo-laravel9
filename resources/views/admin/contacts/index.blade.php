@@ -79,11 +79,11 @@
                                                     class="card-header">{{ $contact->name }} {{$contact->surname}}</div>
 
                                                 <div class="card-body" style="background-size: cover;background-repeat: no-repeat; background-image:
-                                                @if($contact->city==='sanliurfa')
+                                                @if($contact->city==='Sanliurfa')
                                                 url(https://www.shutterstock.com/image-photo/balikligol-fish-lake-sanliurfa-city-260nw-1372544012.jpg)
-                                                @elseif($contact->city==='hatay')
+                                                @elseif($contact->city==='Hatay')
                                                 url(https://icdn.tgrthaber.com.tr/crop/360x250/images/haberler/22-07/04/yeni-kalip-intro-1656940467.jpg)
-                                                @elseif($contact->city==='kahramanmaras')
+                                                @elseif($contact->city==='Kahramanmaras')
                                                 url(https://media-cdn.tripadvisor.com/media/photo-s/06/b0/19/bc/kahramanmaras-kalesi.jpg)
                                                 @endif">
                                                     <div class="row mb-3">

@@ -1,6 +1,13 @@
 @extends('layouts.customer.customer')
 
 @section('content')
+    @if(Session::has('addbalance'))
+
+        <div class="alert alert-success">
+            {{ Session::get('addbalance') }}
+        </div>
+
+    @endif
     <center>
         <div style="position:relative; top:50px;">
             <h1>Lütfen ödeme türünü seçiniz...</h1>

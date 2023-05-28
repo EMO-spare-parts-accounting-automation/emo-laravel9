@@ -5,6 +5,7 @@
         <td bgcolor="#e8e8e8">KULLANICI ADI</td>
         <td bgcolor="#e8e8e8">E-MAİL</td>
         <td bgcolor="#e8e8e8">KULLANICI TİPİ</td>
+        <td bgcolor="#e8e8e8">BAKİYE</td>
         <td bgcolor="#e8e8e8">KAYIT TARİHİ</td>
         <td colspan="2" bgcolor="#e8e8e8">İŞLEMLER</td>
     </tr>
@@ -17,6 +18,7 @@
                 <td bgcolor="#7fffd4">{{$user->name}}</td>
                 <td bgcolor="#7fffd4">{{$user->email}}</td>
                 <td bgcolor="#7fffd4">{{$user->userType}}</td>
+                <td bgcolor="#7fffd4">{{$user->balance}} TL</td>
                 <td bgcolor="#7fffd4">{{$user->created_at}}</td>
                 <td bgcolor="#7fffd4">
                     <form method="GET" action="#">
@@ -32,6 +34,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->userType}}</td>
+                <td>{{$user->balance}} TL</td>
                 <td>{{$user->created_at}}</td>
                 <td>
                     @if($user->email===$myaccount->email)

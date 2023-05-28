@@ -67,6 +67,11 @@ Route::prefix('/customer')->group(function () {
         return view('customer.payment.payment');
     })->name('customer.payment')->middleware(['auth', 'role:customer']);
 
+    Route::controller(\App\Http\Controllers\PaymentController::class)->group(function (){
+        Route::post('addbalance', 'addbalance')->name('admin.payments.addbalance')
+            ->middleware(['auth', 'role:customer']);
+    });
+
     Route::get('payment/credit', function () {
         return view('customer.payment.credit');
     })->name('customer.payment.credit')->middleware(['auth', 'role:customer']);
