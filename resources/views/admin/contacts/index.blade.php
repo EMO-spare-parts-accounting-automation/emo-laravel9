@@ -50,11 +50,20 @@
 
     </head>
     <body>
-    <div style="position: relative;left: 85%">
+    @if($hasContact)
+        <h3 style="text-align: center;">İletişim Bulunamadı</h3>
+
+        <div style="position: relative;left: 85%">
         <a href="{{route('admin.contacts.create')}}" class="button">
             <span>+ Yeni iletişim ekle</span>
         </a>
     </div>
+    @else
+        <div style="position: relative;left: 85%">
+            <a href="{{route('admin.contacts.create')}}" class="button">
+                <span>+ Yeni iletişim ekle</span>
+            </a>
+        </div>
     <center>
         <table style="width: 70%">
             <tr>
@@ -131,6 +140,7 @@
 
         </table>
     </center>
+    @endif
     </body>
     </html>
 
