@@ -1,5 +1,12 @@
 @extends('layouts.customer.customer')
 @section('content')
+    @if(Session::has('deletecart'))
+
+        <div class="alert alert-success">
+            {{ Session::get('deletecart') }}
+        </div>
+
+    @endif
     @if($hasProduct)
         <h3 style="text-align: center;">Ürün Bulunamadı</h3>
 
@@ -32,9 +39,11 @@
                     <td>{{$product['maras']}}</td>
                     <td>{{$product['stock']}}</td>
                     <td>
-                        <form method="GET" action="#">
+                        <form method="GET" action="{{route('customer.shopcart.addshopcart',$product->id)}}">
                             @csrf
-                            <button type="submit">Sepete Ekle</button>
+                            <button type="submit" class="btn btn btn-success" style="margin: 5px">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                            </button>
                         </form>
                     </td>
                 </tr>

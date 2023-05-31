@@ -67,7 +67,7 @@ Route::prefix('/customer')->group(function () {
         return view('customer.payment.payment');
     })->name('customer.payment')->middleware(['auth', 'role:customer']);
 
-    Route::controller(\App\Http\Controllers\PaymentController::class)->group(function (){
+    Route::controller(\App\Http\Controllers\PaymentController::class)->group(function () {
         Route::post('addbalance', 'addbalance')->name('admin.payments.addbalance')
             ->middleware(['auth', 'role:customer']);
     });
@@ -80,4 +80,17 @@ Route::prefix('/customer')->group(function () {
         return view('customer.payment.transfer');
     })->name('customer.payment.transfer')->middleware(['auth', 'role:customer']);
 
+});
+
+Route::prefix('customer/shopcart')->group(function () {
+    Route::controller(\App\Http\Controllers\ShopcartController::class)->group(function () {
+
+        Route::get('index', 'index')->name('customer.shopcart.index');
+        Route::get('addshopcart/{id}', [\App\Http\Controllers\ShopcartController::class, 'addshopcart'])->name('customer.shopcart.addshopcart');
+        Route::get('deletecart', 'deletecart')->name('customer.shopcart.deletecart');
+        Route::delete('delete/{id}', [\App\Http\Controllers\ShopcartController::class, 'destroy'])->name('customer.shopcart.destroy');
+        Route::get('increaseCount/{id}', 'increaseCount')->name('customer.shopcart.increaseCount');
+        Route::get('decreaseCount/{id}', 'decreaseCount')->name('customer.shopcart.decreaseCount');
+        Route::put('updateProductCount/{id}', 'updateProductCount')->name('customer.shopcart.updateProductCount');
+    });
 });
