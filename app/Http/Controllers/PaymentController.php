@@ -17,6 +17,6 @@ class PaymentController extends Controller
         $user=Auth::user();
         $user->balance+=$request->balance;
         $user->save();
-        return redirect('/customer/payment')->with('addbalance', 'Ödenen tutar bakiyenize eklendi!');;
+        return redirect('/customer/payment')->with('addbalance', 'Ödenen tutar bakiyenize eklendi!');
     }
 }

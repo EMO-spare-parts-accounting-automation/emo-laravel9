@@ -9,7 +9,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
@@ -163,9 +167,6 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 Siparişlerim
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Sepet
-            </a>
             <a class="navbar-brand" href="{{ route('customer.payment') }}">
                 Ödeme
             </a>
@@ -216,14 +217,30 @@
                     @endguest
                 </ul>
             </div>
+            <a style="position: relative;left: 10%;"
+                class="navbar-brand" href="{{ route('customer.shopcart.index') }}">
+                <span class="glyphicon glyphicon-shopping-cart cart-icon"></span>
+                <?php
+                    $user=Illuminate\Support\Facades\Auth::user();
+                    $sayac=0;
+                    $Shopcart=\App\Models\Shopcart::where('userid', 'LIKE',$user->id)->get();;
+                    foreach ($Shopcart as $product){
+                        $sayac+=1;
+                    }
+                ?>
+                <span class="badge cart-count">@if($sayac!=0){{$sayac}} @endif</span>
+
+            </a>
+            <div style="position: relative;left: 13%;top: 5px;"><label style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
         </div>
-        <div><label style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
+
     </nav>
 
     <main class="py-4">
         @yield('content')
     </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
