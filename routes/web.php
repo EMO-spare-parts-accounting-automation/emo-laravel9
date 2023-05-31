@@ -60,7 +60,15 @@ Route::prefix('admin/contacts')->group(function () {
 
     });
 });
+Route::prefix('customer/contacts')->group(function () {
+    Route::controller(\App\Http\Controllers\customer\ContactsListController::class)->group(function () {
 
+        Route::get('index', 'index')->name('customer.contacts.index');
+
+        //Route::get('show/{contact}', 'show')->name('customer.contacts.show');
+
+    });
+});
 
 Route::prefix('/customer')->group(function () {
     Route::get('payment', function () {
@@ -82,9 +90,9 @@ Route::prefix('/customer')->group(function () {
 
 });
 
+
 Route::prefix('customer/shopcart')->group(function () {
     Route::controller(\App\Http\Controllers\ShopcartController::class)->group(function () {
-
         Route::get('index', 'index')->name('customer.shopcart.index');
         Route::get('addshopcart/{id}', [\App\Http\Controllers\ShopcartController::class, 'addshopcart'])->name('customer.shopcart.addshopcart');
         Route::get('deletecart', 'deletecart')->name('customer.shopcart.deletecart');
