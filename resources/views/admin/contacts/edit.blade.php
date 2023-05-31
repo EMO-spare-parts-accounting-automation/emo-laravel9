@@ -66,7 +66,8 @@
 
                                                 </option>
                                                 <option value="Kahramanmaras"
-                                                        @if($contact->city=="Kahramanmaras")selected @endif>Kahramanmaraş
+                                                        @if($contact->city=="Kahramanmaras")selected @endif>
+                                                    Kahramanmaraş
                                                 </option>
                                             </select>
                                         </div>

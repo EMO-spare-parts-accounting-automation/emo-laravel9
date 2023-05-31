@@ -51,27 +51,27 @@
                         <td>{{$product['maras']}}</td>
                         <td>
                             <a href="{{route('customer.shopcart.increaseCount' ,$product->id)}}"
-                               class="btn btn-xs btn-success" style="margin: 5px" @if($ShopcartProducts[$productcount]->productcount==$product->stock)disabled @endif>
+                               class="btn btn-xs btn-success" style="margin: 5px"
+                               @if($ShopcartProducts[$productcount]->productcount==$product->stock)disabled @endif>
                                 <span class="glyphicon glyphicon-plus"></span>
                             </a>
                         </td>
                         <td>
-                                <form style=" position: relative;right: 33px;bottom: 7px;
+                            <form style=" position: relative;right: 33px;bottom: 7px;
                                 padding:0px;margin: 0px;width: 10px;height: 10px;"
-                                      action="{{route('customer.shopcart.updateProductCount',$product->id)}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="number" maxlength="3" style="width: 50px" name="newproductCount"
-                                           value="{{$ShopcartProducts[$productcount]->productcount}}">
-                                </form>
-
-
+                                  action="{{route('customer.shopcart.updateProductCount',$product->id)}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="number" maxlength="3" style="width: 50px" name="newproductCount"
+                                       value="{{$ShopcartProducts[$productcount]->productcount}}">
+                            </form>
 
 
                         </td>
                         <td>
                             <a href="{{route('customer.shopcart.decreaseCount',$product->id)}}"
-                               class="btn btn-xs btn-danger" style="margin: 5px" @if($ShopcartProducts[$productcount]->productcount==1)disabled @endif>
+                               class="btn btn-xs btn-danger" style="margin: 5px"
+                               @if($ShopcartProducts[$productcount]->productcount==1)disabled @endif>
                                 <span class="glyphicon glyphicon-minus"></span>
                             </a>
                         </td>
@@ -79,13 +79,14 @@
                             <form method="POST" action="{{route('customer.shopcart.destroy',$product->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-xs btn-danger" style="margin: 5px;padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
+                                <button type="submit" class="btn btn-xs btn-danger"
+                                        style="margin: 5px;padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                             </form>
                         </td>
                             <?php
-                            $productcount+=1;
+                            $productcount += 1;
                             ?>
 
                     </tr>

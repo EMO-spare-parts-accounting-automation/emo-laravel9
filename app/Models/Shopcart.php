@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Shopcart extends Model
 {
     use HasFactory;
-    protected $fillable=[
-      'userid',
-      'productid',
-      'productcount',
+
+    protected $fillable = [
+        'userid',
+        'productid',
+        'productcount',
     ];
 }

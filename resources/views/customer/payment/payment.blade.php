@@ -14,7 +14,7 @@
         </div>
         <div class="animasyon-div">
             <a href="{{route('customer.payment.credit')}}">
-                <button class="round green" >
+                <button class="round green">
                     KREDİ KARTI<span class="round">Kredi/Banka kartı ile online bakiye yüklemek için tıklayın... </span>
                 </button>
             </a>
@@ -28,6 +28,5 @@
             </a>
         </div>
     </center>
-
 
 @endsection

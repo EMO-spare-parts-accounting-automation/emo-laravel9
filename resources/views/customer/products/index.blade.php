@@ -42,7 +42,7 @@
                         <form method="GET" action="{{route('customer.shopcart.addshopcart',$product->id)}}">
                             @csrf
                             <button type="submit" class="btn btn btn-success" style="margin: 5px">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
                             </button>
                         </form>
                     </td>
