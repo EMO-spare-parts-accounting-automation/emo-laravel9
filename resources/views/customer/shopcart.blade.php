@@ -96,6 +96,7 @@
         </center>
 
         <div style="position: relative;left: 70%;top:50px">
+            <h3>Tutar={{$cost}}</h3>
             @include('ui_helper.updateButton',['route'=>route('customer.shopcart.deletecart'),
                             'text'=>'Sepeti Onayla!','bgColor'=>"#0000ff" ,'textColor'=>"#ffffff"])</div>
     @endif

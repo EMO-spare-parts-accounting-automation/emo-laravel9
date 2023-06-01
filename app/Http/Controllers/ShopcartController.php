@@ -12,6 +12,8 @@ use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
 {
+    public $cost = 0;
+
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +24,18 @@ class ShopcartController extends Controller
         $user = Auth::user();
         $ShopcartProducts = Shopcart::where('userid', 'LIKE', $user->id)->get();
         $products = [];
+
         foreach ($ShopcartProducts as $product) {
             array_push($products, Product::query()->find($product->productid));
+            $listCost=Product::all()->find($product->productid);
+            $this->cost += ($listCost->listCost * $product->productcount);
         }
         $productcount = 0;
 
         $hasProduct = empty($products);
-        return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount'));
+
+        $cost = $this->cost;
+        return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'cost'));
 
     }
 
@@ -74,8 +81,10 @@ class ShopcartController extends Controller
         $product = Shopcart::where('userid', 'LIKE', $user->id)
             ->where('productid', 'LIKE', $id)->get();
         $productdata = Product::where('id', 'LIKE', $id)->get();
-        if ($product[0]->productcount != $productdata[0]->stock)
+        if ($product[0]->productcount != $productdata[0]->stock) {
             $product[0]->productcount += 1;
+
+        }
         $product[0]->save();
         return redirect('/customer/shopcart/index');
 
