@@ -12,7 +12,7 @@ use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
 {
-    public $cost = 0;
+    public $totalCost = 0;
 
     /**
      * Display a listing of the resource.
@@ -28,14 +28,14 @@ class ShopcartController extends Controller
         foreach ($ShopcartProducts as $product) {
             array_push($products, Product::query()->find($product->productid));
             $listCost=Product::all()->find($product->productid);
-            $this->cost += ($listCost->listCost * $product->productcount);
+            $this->totalCost += ($listCost->listCost * $product->productcount);
         }
         $productcount = 0;
 
         $hasProduct = empty($products);
 
-        $cost = $this->cost;
-        return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'cost'));
+        $totalCost = $this->totalCost;
+        return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'totalCost'));
 
     }
 
