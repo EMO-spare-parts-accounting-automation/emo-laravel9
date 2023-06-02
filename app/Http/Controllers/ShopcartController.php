@@ -14,6 +14,17 @@ class ShopcartController extends Controller
 {
     public $totalCost = 0;
 
+    public function getTotalCost()
+    {
+        $user = Auth::user();
+        $ShopcartProducts = Shopcart::where('userid', 'LIKE', $user->id)->get();
+        foreach ($ShopcartProducts as $product) {
+            $listCost = Product::all()->find($product->productid);
+            $this->totalCost += ($listCost->listCost * $product->productcount);
+        }
+        return $this->totalCost;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,23 +38,29 @@ class ShopcartController extends Controller
 
         foreach ($ShopcartProducts as $product) {
             array_push($products, Product::query()->find($product->productid));
-            $listCost=Product::all()->find($product->productid);
-            $this->totalCost += ($listCost->listCost * $product->productcount);
         }
         $productcount = 0;
-
         $hasProduct = empty($products);
-
-        $totalCost = $this->totalCost;
+        $totalCost = $this->getTotalCost();
         return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'totalCost'));
 
     }
-
+    public function decreaseBalance($userId,$cost){
+        $user=User::all()->find($userId);
+        $user->balace-=$cost;
+        $user->save();
+    }
     public function deletecart()
     {
         $user = Auth::user();
-        Shopcart::where('userid', 'LIKE', $user->id)->delete();
-        return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
+        $cost=$this->getTotalCost();
+        if ($user->balance >= $cost) {
+            $user->balance -= $cost;
+            $user->save();
+            Shopcart::where('userid', 'LIKE', $user->id)->delete();
+            return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
+        }
+        return redirect('/customer/shopcart/index')->with('addshopcartwarning', 'Yetersiz Bakiye!');
 
     }
 
@@ -188,7 +205,8 @@ class ShopcartController extends Controller
     {
         $user = Auth::user();
         Shopcart::where('userid', 'LIKE', $user->id)
-            ->where('productid', 'LIKE', $id)->delete();
+            ->where('productid', 'LIKE', $id)
+            ->delete();
         return redirect('customer/shopcart/index')->with('deleteproduct', 'Seçilen sepetinizden ürün silinmiştir!');
     }
 }
