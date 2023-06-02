@@ -102,3 +102,17 @@ Route::prefix('customer/shopcart')->group(function () {
         Route::put('updateProductCount/{id}', 'updateProductCount')->name('customer.shopcart.updateProductCount');
     });
 });
+/*
+Route::prefix('customer/orders')->group(function () {
+    Route::controller(\App\Http\Controllers\Products\ProductsController::class)->group(function () {
+        Route::get('create', 'create')->name('admin.products.create');
+        Route::post('store', 'store')->name('admin.products.store');
+        Route::put('update/{product}', 'update')->name('admin.products.update');
+        Route::delete('delete/{product}', 'destroy')->name('admin.products.destroy');
+        Route::get('index', 'index')->name('admin.products.index');
+        Route::get('edit/{product}', 'edit')->name('admin.products.edit');
+        //Route::get('show/{product}', 'show')->name('admin.products.show');
+        Route::get('search', 'search')->name('admin.products.search');
+    });
+});
+*/
