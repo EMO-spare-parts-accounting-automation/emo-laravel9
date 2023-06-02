@@ -89,6 +89,8 @@ class ShopcartController extends Controller
                     count: $takenProduct->productcount,
                     productCost: $product[0]->listCost,
                     totalCost:$cost);
+                    $product[0]->stock-=$takenProduct->productcount;
+                    $product[0]->save();
             }
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
