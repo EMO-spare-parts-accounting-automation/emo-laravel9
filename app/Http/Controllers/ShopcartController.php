@@ -12,6 +12,10 @@ use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:customer']);
+    }
     public $totalCost = 0;
 
     public function getTotalCost()
