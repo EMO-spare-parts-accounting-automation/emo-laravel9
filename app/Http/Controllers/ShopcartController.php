@@ -106,8 +106,8 @@ class ShopcartController extends Controller
             ->where('productid', 'LIKE', $id)
             ->get();
         $productdata = Product::where('id', 'LIKE', $id)->get();
-        if (count($products) == 1) {
-            if ($products[0]->productcount != $productdata[0]->stock) {
+        if (count($products) == 1 ) {
+            if ($products[0]->productcount != $productdata[0]->stock   ) {
                 $product = $products[0];
                 $product->productcount += 1;
                 $product->save();

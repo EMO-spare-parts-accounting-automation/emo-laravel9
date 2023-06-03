@@ -1,9 +1,13 @@
 <?php
 
-namespace app\Http\Controllers\Orders;
+
+namespace App\Http\Controllers\Orders;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class OrdersController extends Controller
 {
@@ -14,7 +18,11 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+        $orders=Order::where('userId',$user->id)
+        ->get();
+        $hasOrder=$orders->isEmpty();
+        return view('customer.orders.index', compact('orders', 'hasOrder'));
     }
 
     /**

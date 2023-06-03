@@ -167,7 +167,7 @@
             <a class="navbar-brand" href="{{ route('customer.products.index') }}">
                 Parça Ara
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ route('customer.orders.index') }}">
                 Siparişlerim
             </a>
             <a class="navbar-brand" href="{{ route('customer.payment') }}">

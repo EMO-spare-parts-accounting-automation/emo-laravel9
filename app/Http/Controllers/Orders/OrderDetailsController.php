@@ -1,8 +1,10 @@
 <?php
 
-namespace app\Http\Controllers\Orders;
+namespace App\Http\Controllers\Orders;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 
 class OrderDetailsController extends Controller
@@ -46,7 +48,10 @@ class OrderDetailsController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderDetails=OrderDetail::where('orderId',$id)->get();
+        $order=Order::all()->find($id);
+        $status=$order->status;
+        return view('customer.orderDetails.show', compact('orderDetails','status' ));
     }
 
     /**
