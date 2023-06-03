@@ -190,7 +190,7 @@
                     <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
                     Parça Ara
                 </a>
-                <a class="navbar-brand"  href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+                <a class="navbar-brand"  href="{{ route('customer.orders.index') }}" style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 40px;"></span><br>
                     Siparişlerim
                 </a>
@@ -231,6 +231,7 @@
                         style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position: relative;left: 15%;top: 5px">
+
 
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">

@@ -20,14 +20,14 @@
         <br>
         <table style="width: 1300px">
             <tr>
-                <td bgcolor="#e8e8e8" style="padding: 5px;margin: 5px">ID</td>
-                <td bgcolor="#e8e8e8">Marka</td>
-                <td bgcolor="#e8e8e8">İsim</td>
-                <td bgcolor="#e8e8e8">Fiyat</td>
-                <td bgcolor="#e8e8e8">Urfa</td>
-                <td bgcolor="#e8e8e8">Hatay</td>
-                <td bgcolor="#e8e8e8">Maras</td>
-                <td bgcolor="#e8e8e8">Stok</td>
+                <td bgcolor="#303030" style="padding: 5px;margin: 5px">><label style="color: white">ID</label></td>
+                <td bgcolor="#303030">><label style="color: white">Marka</label></td>
+                <td bgcolor="#303030">><label style="color: white">İsim</label></td>
+                <td bgcolor="#303030">><label style="color: white">Fiyat</label></td>
+                <td bgcolor="#303030">><label style="color: white">Urfa</label></td>
+                <td bgcolor="#303030">><label style="color: white">Hatay</label></td>
+                <td bgcolor="#303030">><label style="color: white">Maras</label></td>
+                <td bgcolor="#303030">><label style="color: white">Stok</label></td>
 
             </tr>
 

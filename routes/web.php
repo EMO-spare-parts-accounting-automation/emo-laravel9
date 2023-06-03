@@ -102,3 +102,29 @@ Route::prefix('customer/shopcart')->group(function () {
         Route::put('updateProductCount/{id}', 'updateProductCount')->name('customer.shopcart.updateProductCount');
     });
 });
+
+Route::prefix('customer/orders')->group(function () {
+    Route::controller(\App\Http\Controllers\Orders\OrdersController::class)->group(function () {
+        //Route::get('create', 'create')->name('customer.orders.create');
+        //Route::post('store', 'store')->name('customer.orders.store');
+        //Route::put('update/{product}', 'update')->name('customer.orders.update');
+        //Route::delete('delete/{product}', 'destroy')->name('customer.orders.destroy');
+        Route::get('index', 'index')->name('customer.orders.index');
+        //Route::get('edit/{product}', 'edit')->name('customer.orders.edit');
+        //Route::get('show/{product}', 'show')->name('customer.orders.show');
+
+    });
+});
+
+Route::prefix('customer/orderDetails')->group(function () {
+    Route::controller(\App\Http\Controllers\Orders\OrderDetailsController::class)->group(function () {
+        //Route::get('create', 'create')->name('customer.orders.create');
+        //Route::post('store', 'store')->name('customer.orders.store');
+        //Route::put('update/{product}', 'update')->name('customer.orders.update');
+        //Route::delete('delete/{product}', 'destroy')->name('customer.orders.destroy');
+       // Route::get('index', 'index')->name('customer.orderDetails.index');
+        //Route::get('edit/{product}', 'edit')->name('customer.orders.edit');
+        Route::get('show/{orderDetail}', 'show')->name('customer.orderDetails.show');
+
+    });
+});
