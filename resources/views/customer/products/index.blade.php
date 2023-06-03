@@ -11,26 +11,29 @@
         <h3 style="text-align: center;">Ürün Bulunamadı</h3>
 
     @else
+    <center>
         <form method="GET" action="{{route('customer.products.search')}}">
             <input type="search" name="search" value="" placeholder="Parça ara">
             <input type="submit" value="Ara">
         </form>
-        <table style="width: 70%">
+        <br>
+        <br>
+        <table style="width: 1300px">
             <tr>
-                <td>ID</td>
-                <td>Marka</td>
-                <td>İsim</td>
-                <td>Fiyat</td>
-                <td>Urfa</td>
-                <td>Hatay</td>
-                <td>Maras</td>
-                <td>Stok</td>
+                <td bgcolor="#e8e8e8" style="padding: 5px;margin: 5px">ID</td>
+                <td bgcolor="#e8e8e8">Marka</td>
+                <td bgcolor="#e8e8e8">İsim</td>
+                <td bgcolor="#e8e8e8">Fiyat</td>
+                <td bgcolor="#e8e8e8">Urfa</td>
+                <td bgcolor="#e8e8e8">Hatay</td>
+                <td bgcolor="#e8e8e8">Maras</td>
+                <td bgcolor="#e8e8e8">Stok</td>
 
             </tr>
 
             @foreach($products as $product)
                 <tr>
-                    <td>{{$product['id']}}</td>
+                    <td style="padding: 15px;margin: 15px">{{$product['id']}}</td>
                     <td>{{$product['brand']}}</td>
                     <td>{{$product['name']}}</td>
                     <td>{{$product['listCost']}}</td>
@@ -41,8 +44,8 @@
                     <td>
                         <form method="GET" action="{{route('customer.shopcart.addshopcart',$product->id)}}">
                             @csrf
-                            <button type="submit" class="btn btn btn-success" style="margin: 5px">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <button type="submit" class="btn btn" style="margin: 5px;background-color: #e09540">
+                                <span class="glyphicon glyphicon-shopping-cart" style="color: white"></span>
                             </button>
                         </form>
                     </td>
@@ -50,6 +53,7 @@
             @endforeach
 
         </table>
+    </center>
 
     @endif
 

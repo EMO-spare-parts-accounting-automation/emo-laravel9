@@ -78,11 +78,12 @@
                                     </table>
                                 </fieldset>
                             </div>
-                            <br>
-                            <div class="row mb-9">
+
+                            <div class="row mb-3" style="width: 200px;height: 100px;">
                                 <fieldset>
-                                    <legend class="col-md-4 col-form-label">Stok</legend>
-                                    <div class="col-md-6">
+                                    <br>
+                                    <label class="col-md-4 col-form-label">Stok</label><br>
+                                    <div class="col-md-9">
                                         <input type="text" value="{{$stok}}" class="form-control" name="stock"
                                                placeholder="Stok" maxlength="15" autofous required>
                                     </div>

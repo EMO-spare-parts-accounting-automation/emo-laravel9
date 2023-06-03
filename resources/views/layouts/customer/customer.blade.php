@@ -27,10 +27,28 @@
             background-position: top center;
             background-attachment: fixed;
             background-size: 1000px;
+            height: 100%;
+            background-color: #fcfff5;
             font-family: 'Nunito', sans-serif;
 
         }
+        nav{
+            background: linear-gradient(bottom,#d1dbbd,#3e606f);
+            background: -moz-linear-gradient(bottom,#d1dbbd,#3e606f);
+            background: -webkit-linear-gradient(bottom,#d1dbbd,#3e606f);
+        }
+        figure {
+            display:flex;
+        }
 
+        .img-emo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #999;
+            object-fit: cover;
+            object-position: 50% 15%;
+        }
 
         .animasyon-div {
             list-style: none;
@@ -160,29 +178,60 @@
 
 </head>
 <body>
+<div id="app" >
+<ul class="nav nav-tabs">
 
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('customer.products.index') }}">
-                Parça Ara
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Siparişlerim
-            </a>
-            <a class="navbar-brand" href="{{ route('customer.payment') }}">
-                Ödeme
-            </a>
-            <a class="navbar-brand" href="{{ route('customer.contacts.index') }}">
-                İletişim
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" >
+            <div class="container" >
+                <figure>
+                    <img class="img-emo" src="https://r.resimlink.com/hbqwK5i.jpeg" alt="">
+                </figure>
+                <a class="navbar-brand" href="{{ route('customer.products.index') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
+                    Parça Ara
+                </a>
+                <a class="navbar-brand"  href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 40px;"></span><br>
+                    Siparişlerim
+                </a>
+                <a class="navbar-brand" href="{{ route('customer.payment') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-credit-card" style="position: relative ;left: 20px;"></span><br>
+                    Ödeme
+                </a>
+                <a class="navbar-brand" href="{{ route('customer.contacts.index') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
+                    İletişim
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a style="position: relative;left: 10%;bottom: 10px"
+                   class="navbar-brand" href="{{ route('customer.shopcart.index') }}">
+                    <span class="glyphicon glyphicon-shopping-cart cart-icon" style="position: relative ;left: 15px;"></span>
+                    <?php
+                    $user = Illuminate\Support\Facades\Auth::user();
+                    $sayac = 0;
+                    $Shopcart = \App\Models\Shopcart::where('userid', 'LIKE', $user->id)->get();;
+                    foreach ($Shopcart as $product) {
+                        $sayac += 1;
+                    }
+                    ?>
+                    <span class="badge cart-count" style="position: relative ;left: 10px;bottom: 10px;background-color: red">@if($sayac!=0)
+                            {{$sayac}}
+                        @endif</span><br>
+                    Sepet
+
+                </a>
+                <div style="position: relative;left: 13%;top: 5px;">
+                    <span class="glyphicon glyphicon-piggy-bank" style="position: relative ;left: 40px;"></span><br>
+                    <label
+                        style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position: relative;left: 15%;top: 5px">
+
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
 
@@ -190,6 +239,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -207,6 +257,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <span class="glyphicon glyphicon-user" style="position: relative ;"></span>
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -225,27 +276,10 @@
                     @endguest
                 </ul>
             </div>
-            <a style="position: relative;left: 10%;"
-               class="navbar-brand" href="{{ route('customer.shopcart.index') }}">
-                <span class="glyphicon glyphicon-shopping-cart cart-icon"></span>
-                <?php
-                $user = Illuminate\Support\Facades\Auth::user();
-                $sayac = 0;
-                $Shopcart = \App\Models\Shopcart::where('userid', 'LIKE', $user->id)->get();;
-                foreach ($Shopcart as $product) {
-                    $sayac += 1;
-                }
-                ?>
-                <span class="badge cart-count">@if($sayac!=0)
-                        {{$sayac}}
-                    @endif</span>
 
-            </a>
-            <div style="position: relative;left: 13%;top: 5px;"><label
-                    style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
-        </div>
+        </nav>
+</ul>
 
-    </nav>
 
     <main class="py-4">
         @yield('content')

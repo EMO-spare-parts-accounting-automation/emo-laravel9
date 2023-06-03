@@ -1,7 +1,7 @@
 <table border="1" cellpadding="10" style=" width: 70% ">
     <thead>
     <tr>
-        <td bgcolor="#e8e8e8">ID</td>
+        <td bgcolor="#e8e8e8" style="padding: 5px;margin: 5px">ID</td>
         <td bgcolor="#e8e8e8">KULLANICI ADI</td>
         <td bgcolor="#e8e8e8">E-MAİL</td>
         <td bgcolor="#e8e8e8">KULLANICI TİPİ</td>
@@ -14,7 +14,7 @@
     @foreach($users as $user)
         @if($user->email===$myaccount->email)
             <tr>
-                <td bgcolor="#7fffd4">{{$user->id}}</td>
+                <td bgcolor="#7fffd4" style="padding: 15px;margin: 15px">{{$user->id}}</td>
                 <td bgcolor="#7fffd4">{{$user->name}}</td>
                 <td bgcolor="#7fffd4">{{$user->email}}</td>
                 <td bgcolor="#7fffd4">{{$user->userType}}</td>
@@ -30,7 +30,7 @@
             </tr>
         @else
             <tr>
-                <td>{{$user->id}}</td>
+                <td style="padding: 15px;margin: 15px">{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->userType}}</td>

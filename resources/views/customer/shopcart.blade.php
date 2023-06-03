@@ -26,23 +26,23 @@
         <h3 style="text-align: center;">Sepetiniz Boş!</h3>
     @else
         <center>
-            <table style="width: 70%">
+            <table style="width: 1100px">
                 <tr>
-                    <td>ID</td>
-                    <td>Marka</td>
-                    <td>İsim</td>
-                    <td>Fiyat</td>
-                    <td>Urfa</td>
-                    <td>Hatay</td>
-                    <td>Maras</td>
-                    <td colspan="3">adet</td>
-                    <td></td>
+                    <td bgcolor="#e8e8e8" style="padding: 5px;margin: 5px">ID</td>
+                    <td  bgcolor="#e8e8e8">Marka</td>
+                    <td  bgcolor="#e8e8e8">İsim</td>
+                    <td  bgcolor="#e8e8e8">Fiyat</td>
+                    <td  bgcolor="#e8e8e8">Urfa</td>
+                    <td  bgcolor="#e8e8e8">Hatay</td>
+                    <td  bgcolor="#e8e8e8">Maras</td>
+                    <td bgcolor="#e8e8e8" colspan="3">adet</td>
+                    <td  bgcolor="#e8e8e8"></td>
 
                 </tr>
 
                 @foreach($products as $product)
                     <tr>
-                        <td>{{$product['id']}}</td>
+                        <td style="padding: 15px;margin: 15px">{{$product['id']}}</td>
                         <td>{{$product['brand']}}</td>
                         <td>{{$product['name']}}</td>
                         <td>{{$product['listCost']}}</td>
