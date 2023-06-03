@@ -6,6 +6,7 @@
         <h3 style="text-align: center;">Mevcut Sipariş Yok</h3>
 
     @else
+
         <center>
         <table border="1" style="position: relative;top: 100px;width: 1300px">
             <tr>
@@ -14,10 +15,12 @@
                 <td bgcolor="#303030"><label style="color: white">Durum</label></td>
                 <td bgcolor="#303030"><label style="color: white">Tutar</label></td>
                 <td bgcolor="#303030" style="padding-left: 40px"><label style="color: white">Detay</label></td>
+
             </tr>
 
             @foreach($orders as $order)
                 <tr>
+
 
                     <td style="padding: 15px;margin: 15px">
                         <a style="color: black;" href="{{route('customer.orderDetails.show',$order->id)}}">
@@ -63,11 +66,14 @@
                             </div>
                         </a>
 
+
                     </td>
             @endforeach
 
         </table>
+
         </center>
+
 
     @endif
 
