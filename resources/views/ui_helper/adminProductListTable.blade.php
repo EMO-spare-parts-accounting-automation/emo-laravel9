@@ -1,8 +1,8 @@
 
-<table border="1" cellpadding="10" style="width: 70%">
+<table border="1" style="width: 1300px;height: 100%;padding: 10px;margin: 20px;">
     <thead>
-    <tr>
-        <td bgcolor="#e8e8e8">ID</td>
+    <tr st>
+        <td bgcolor="#e8e8e8" style="padding: 5px;margin: 5px">ID</td>
         <td bgcolor="#e8e8e8">Marka</td>
         <td bgcolor="#e8e8e8">İsim</td>
         <td bgcolor="#e8e8e8">Alış</td>
@@ -19,7 +19,7 @@
     <tbody>
     @foreach($products as $product)
         <tr>
-            <td>{{$product['id']}}</td>
+            <td style="padding: 15px;margin: 15px">{{$product['id']}}</td>
             <td>{{$product['brand']}}</td>
             <td>{{$product['name']}}</td>
             <td>{{$product['cost']}}</td>

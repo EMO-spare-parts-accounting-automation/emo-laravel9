@@ -14,8 +14,6 @@ use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
 {
-
-
     public function getTotalCost()
     {
         $totalCost=0;

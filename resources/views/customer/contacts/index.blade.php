@@ -56,7 +56,7 @@
     @else
 
         <center>
-            <table style="width: 70%">
+            <table style="width: 1500px">
                 <tr>
                     <td></td>
                     <td></td>
@@ -68,8 +68,8 @@
                     @if(($contact->id)%3==1||($contact->id)==1)
                         <tr>
                             @endif
-                            <td>
-                                <div class="container" style="padding: 0px;margin: 0px">
+                            <td style="padding: 0px;margin: 0px;">
+                                <div class="container" style="padding: 0px;margin: 0px;width: 500px">
                                     <div class="row justify-content-center" style="padding: 0px;margin: 0px">
                                         <div class="col-md-8"
                                              style="width: 470px;height: 300px ;padding: 20px;margin: 0px">
@@ -78,7 +78,8 @@
                                                 <div
                                                     class="card-header">{{ $contact->name }} {{$contact->surname}}</div>
 
-                                                <div class="card-body" style="background-size: cover;background-repeat: no-repeat; background-image:
+                                                <div class="card-body" style="position: relative;left: 1px;
+                                                width: 447px;height: 240px;background-size: cover;background-repeat: no-repeat; background-image:
                                                 @if($contact->city==='Sanliurfa')
                                                 url(https://www.shutterstock.com/image-photo/balikligol-fish-lake-sanliurfa-city-260nw-1372544012.jpg)
                                                 @elseif($contact->city==='Hatay')
