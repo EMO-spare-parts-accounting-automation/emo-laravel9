@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\Shopcart;
 use App\Models\User;
@@ -12,17 +14,18 @@ use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
 {
-    public $totalCost = 0;
+
 
     public function getTotalCost()
     {
+        $totalCost=0;
         $user = Auth::user();
         $ShopcartProducts = Shopcart::where('userid', 'LIKE', $user->id)->get();
         foreach ($ShopcartProducts as $product) {
             $listCost = Product::all()->find($product->productid);
-            $this->totalCost += ($listCost->listCost * $product->productcount);
+            $totalCost += ($listCost->listCost * $product->productcount);
         }
-        return $this->totalCost;
+        return $totalCost;
     }
 
     /**
@@ -45,18 +48,50 @@ class ShopcartController extends Controller
         return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'totalCost'));
 
     }
-    public function decreaseBalance($userId,$cost){
-        $user=User::all()->find($userId);
-        $user->balace-=$cost;
-        $user->save();
+
+    public function createNewOrder($userId,$totalCost){
+        $order = new Order();
+        $order->userId=$userId;
+        $order->status='Kargoya verilmesi bekleniyor';
+        $order->totalCost=$totalCost;
+        $order->save();
+        return $order->id;
     }
-    public function deletecart()
+    public function createNewOrderDetail($userID,$orderID,$productId,$count,$productCost,$totalCost){
+        $orderDetail=new OrderDetail();
+        $orderDetail->userId=$userID;
+        $orderDetail->orderId=$orderID;
+        $orderDetail->productID=$productId;
+        $orderDetail->count=$count;
+        $orderDetail->cost=$productCost;
+        $orderDetail->totalCost=$totalCost;
+        $orderDetail->save();
+
+    }
+    public function deletecart()  // Bu method başta silmek için yazılsa da daha sonra Mert Ozan Lislas tarafından ,
+        //silme greçekleşmeden önce sipariş oluşturulması ve ardından sipariş detaylarını oluşturması,
+        //en sonunda da silmesi sağlandı ,
+        // methodun ismi işlevini tam yansıtmadığından detayları açıklıyorum
     {
         $user = Auth::user();
         $cost=$this->getTotalCost();
         if ($user->balance >= $cost) {
             $user->balance -= $cost;
             $user->save();
+            $orderid=$this->createNewOrder($user->id,$cost);  //hem yeni bir order oluşturdum hem de id sini aldım
+            $takenProducts=Shopcart::where('userid',$user->id)
+            ->get();
+            foreach ($takenProducts as $takenProduct){
+                $product=Product::where('id',$takenProduct->productid)->get();
+                $this->createNewOrderDetail(userID: $user->id,
+                    orderID:$orderid ,
+                    productId:$takenProduct->productid,
+                    count: $takenProduct->productcount,
+                    productCost: $product[0]->listCost,
+                    totalCost:$cost);
+                    $product[0]->stock-=$takenProduct->productcount;
+                    $product[0]->save();
+            }
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
         }
@@ -71,8 +106,8 @@ class ShopcartController extends Controller
             ->where('productid', 'LIKE', $id)
             ->get();
         $productdata = Product::where('id', 'LIKE', $id)->get();
-        if (count($products) == 1) {
-            if ($products[0]->productcount != $productdata[0]->stock) {
+        if (count($products) == 1 ) {
+            if ($products[0]->productcount != $productdata[0]->stock   ) {
                 $product = $products[0];
                 $product->productcount += 1;
                 $product->save();
