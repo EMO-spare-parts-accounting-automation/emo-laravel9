@@ -19,8 +19,9 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-..." crossorigin="anonymous"/>
     <style>
         body {
             background-repeat: no-repeat;
@@ -32,13 +33,15 @@
             font-family: 'Nunito', sans-serif;
 
         }
-        nav{
-            background: linear-gradient(bottom,#d1dbbd,#3e606f);
-            background: -moz-linear-gradient(bottom,#d1dbbd,#3e606f);
-            background: -webkit-linear-gradient(bottom,#d1dbbd,#3e606f);
+
+        nav {
+            background: linear-gradient(bottom, #d1dbbd, #3e606f);
+            background: -moz-linear-gradient(bottom, #d1dbbd, #3e606f);
+            background: -webkit-linear-gradient(bottom, #d1dbbd, #3e606f);
         }
+
         figure {
-            display:flex;
+            display: flex;
         }
 
         .img-emo {
@@ -178,27 +181,31 @@
 
 </head>
 <body>
-<div id="app" >
-<ul class="nav nav-tabs">
+<div id="app">
+    <ul class="nav nav-tabs">
 
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" >
-            <div class="container" >
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="container">
                 <figure>
                     <img class="img-emo" src="https://r.resimlink.com/hbqwK5i.jpeg" alt="">
                 </figure>
-                <a class="navbar-brand" href="{{ route('customer.products.index') }}" style="position: relative ;bottom: 10px;">
+                <a class="navbar-brand" href="{{ route('customer.products.index') }}"
+                   style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
                     Parça Ara
                 </a>
-                <a class="navbar-brand"  href="{{ route('customer.orders.index') }}" style="position: relative ;bottom: 10px;">
+                <a class="navbar-brand" href="{{ route('customer.orders.index') }}"
+                   style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 40px;"></span><br>
                     Siparişlerim
                 </a>
-                <a class="navbar-brand" href="{{ route('customer.payment') }}" style="position: relative ;bottom: 10px;">
+                <a class="navbar-brand" href="{{ route('customer.payment') }}"
+                   style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-credit-card" style="position: relative ;left: 20px;"></span><br>
                     Ödeme
                 </a>
-                <a class="navbar-brand" href="{{ route('customer.contacts.index') }}" style="position: relative ;bottom: 10px;">
+                <a class="navbar-brand" href="{{ route('customer.contacts.index') }}"
+                   style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
                     İletişim
                 </a>
@@ -210,7 +217,8 @@
 
                 <a style="position: relative;left: 10%;bottom: 10px"
                    class="navbar-brand" href="{{ route('customer.shopcart.index') }}">
-                    <span class="glyphicon glyphicon-shopping-cart cart-icon" style="position: relative ;left: 15px;"></span>
+                    <span class="glyphicon glyphicon-shopping-cart cart-icon"
+                          style="position: relative ;left: 15px;"></span>
                     <?php
                     $user = Illuminate\Support\Facades\Auth::user();
                     $sayac = 0;
@@ -219,7 +227,8 @@
                         $sayac += 1;
                     }
                     ?>
-                    <span class="badge cart-count" style="position: relative ;left: 10px;bottom: 10px;background-color: red">@if($sayac!=0)
+                    <span class="badge cart-count"
+                          style="position: relative ;left: 10px;bottom: 10px;background-color: red">@if($sayac!=0)
                             {{$sayac}}
                         @endif</span><br>
                     Sepet
@@ -230,8 +239,8 @@
                     <label
                         style="position: relative;right: 10px">BAKİYENİZ: {{Auth::user()->balance}} TL</label></div>
             </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position: relative;left: 15%;top: 5px">
-
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"
+                 style="position: relative;left: 15%;top: 5px">
 
 
                 <!-- Left Side Of Navbar -->
@@ -280,7 +289,7 @@
             </div>
 
         </nav>
-</ul>
+    </ul>
 
 
     <main class="py-4">
