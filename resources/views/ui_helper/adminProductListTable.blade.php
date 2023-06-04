@@ -1,4 +1,3 @@
-
 <table border="1" style="width: 1300px;height: 100%;padding: 10px;margin: 20px;">
     <thead>
     <tr st>
@@ -25,9 +24,21 @@
             <td>{{$product['cost']}}</td>
             <td>{{$product['costKDV']}}</td>
             <td>{{$product['listCost']}}</td>
-            <td>{{$product['sanliurfa']}}</td>
-            <td>{{$product['hatay']}}</td>
-            <td>{{$product['maras']}}</td>
+            <td>@if($product['sanliurfa']=='var')
+                    <i style="color: green" class='bi bi-check-circle-fill'></i>
+                @else
+                    <i style="color: red" class='bi bi-x-circle-fill'></i>
+                @endif</td>
+            <td>@if($product['hatay']=='var')
+                    <i style="color: green" class='bi bi-check-circle-fill'></i>
+                @else
+                    <i style="color: red" class='bi bi-x-circle-fill'></i>
+                @endif</td>
+            <td>@if($product['maras']=='var')
+                    <i style="color: green" class='bi bi-check-circle-fill'></i>
+                @else
+                    <i style="color: red" class='bi bi-x-circle-fill'></i>
+                @endif</td>
             <td>{{$product['stock']}}</td>
             <td>
                 @include('ui_helper.updateButton',[
