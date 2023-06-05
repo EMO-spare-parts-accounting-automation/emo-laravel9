@@ -1,7 +1,7 @@
 @extends('layouts.customer.customer')
 
 @section('content')
-    <div style="position: relative; left: 120px">
+    <div style="position: relative; left: 120px;width: 100%">
         <h1 style="position: relative;left: 100px">İstediğiniz bankaya havale/eft yapıp satıcıya bildiriniz...</h1>
         <div
             style="margin:auto;width: 80%;border-width: 5px;border-style: dashed;border-color:gold;margin: 15px;padding: 15px">

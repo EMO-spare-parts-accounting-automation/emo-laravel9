@@ -15,6 +15,13 @@
         </div>
 
     @endif
+    @if(Session::has('addshopcartwarningstock'))
+
+        <div class="alert alert-warning">
+            {{ Session::get('addshopcartwarningstock') }}
+        </div>
+
+    @endif
     @if(Session::has('deleteproduct'))
 
         <div class="alert alert-danger">
@@ -95,8 +102,10 @@
             </table>
         </center>
 
-        <div style="position: relative;left: 70%;top:50px">
-            <h3>Tutar={{$totalCost}}</h3>
+        <div style="position: relative;left: 70%;top:50px;width: 250px">
+            <h3><span class="glyphicon glyphicon-credit-card" style="position: relative;left: -50px;top:51px;"></span></h3>
+            <h3> Tutar = {{$totalCost}} TL</h3>
+
             @include('ui_helper.updateButton',['route'=>route('customer.shopcart.deletecart'),
                             'text'=>'Sepeti Onayla!',
                             'bgColor'=>"#0000ff" ,

@@ -11,6 +11,10 @@ use function PHPUnit\Framework\isEmpty;
 
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:customer']);
+    }
     /**
      * Display a listing of the resource.
      *
