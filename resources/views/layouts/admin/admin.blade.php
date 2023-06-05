@@ -65,7 +65,7 @@
                 <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
                 Parça Ara
             </a>
-            <a class="navbar-brand"  href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+            <a class="navbar-brand"  href="{{ route('admin.orders.index') }}" style="position: relative ;bottom: 10px;">
                 <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 30px;"></span><br>
                 Siparişler
             </a>

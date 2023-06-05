@@ -18,6 +18,7 @@ class ShopcartController extends Controller
     {
         $this->middleware(['auth', 'role:customer']);
     }
+
     public function getTotalCost()
     {
         $totalCost = 0;
@@ -79,11 +80,11 @@ class ShopcartController extends Controller
         $user = Auth::user();
         $takenProducts = Shopcart::where('userid', $user->id)
             ->get();
-        foreach ($takenProducts as $takenProduct){
-            $product=Product::query()->find($takenProduct->productid);
-            $productStock=$product->stock;
-            if($productStock < $takenProduct->productcount){
-                $takenProduct->productcount=$productStock;
+        foreach ($takenProducts as $takenProduct) {
+            $product = Product::query()->find($takenProduct->productid);
+            $productStock = $product->stock;
+            if ($productStock < $takenProduct->productcount) {
+                $takenProduct->productcount = $productStock;
                 $takenProduct->save();
                 return redirect('/customer/shopcart/index')->with('addshopcartwarningstock', 'Sipariş etmek istediğiniz ürünler için stok yetersizdir! Mevcut stoğa göre ürün adediniz düzeltilmiştir!');
 
@@ -111,11 +112,6 @@ class ShopcartController extends Controller
         }
         return redirect('/customer/shopcart/index')->with('addshopcartwarning', 'Yetersiz Bakiye!');
 
-
-
-
-
-
     }
 
     public function addshopcart($id)
@@ -136,7 +132,7 @@ class ShopcartController extends Controller
 
 
         } else {
-            if ($productdata[0]->stock<1) {
+            if ($productdata[0]->stock < 1) {
                 return redirect('/customer/shopcart/index')->with('addshopcartwarning', 'Seçilen stokta yok!');
             }
             Shopcart::create([

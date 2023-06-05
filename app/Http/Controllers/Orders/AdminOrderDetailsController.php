@@ -1,19 +1,17 @@
 <?php
 
-
 namespace App\Http\Controllers\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use function PHPUnit\Framework\isEmpty;
 
-class OrdersController extends Controller
+class AdminOrderDetailsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'role:customer']);
+        $this->middleware(['auth', 'role:admin']);
     }
     /**
      * Display a listing of the resource.
@@ -22,11 +20,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
-        $orders=Order::where('userId',$user->id)
-        ->get();
-        $hasOrder=$orders->isEmpty();
-        return view('customer.orders.index', compact('orders', 'hasOrder'));
+        //
     }
 
     /**
@@ -47,7 +41,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -58,7 +52,11 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderDetails=OrderDetail::where('orderId',$id)->get();
+        $order=Order::all()->find($id);
+        $status=$order->status;
+        $orderID=$id;
+        return view('admin.orderDetails.show', compact('orderDetails','status','orderID' ));
     }
 
     /**
@@ -82,7 +80,6 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
-
     }
 
     /**
