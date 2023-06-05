@@ -1,6 +1,5 @@
 @extends('layouts.admin.admin')
 @section('content')
-
     <div style="display: flex;">
         <h3><span class="glyphicon glyphicon-compressed" style="position: relative;left: 150px;">  {{$status}}</span>
         </h3>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Orders;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminOrderDetailsController extends Controller
@@ -56,7 +57,9 @@ class AdminOrderDetailsController extends Controller
         $order=Order::all()->find($id);
         $status=$order->status;
         $orderID=$id;
-        return view('admin.orderDetails.show', compact('orderDetails','status','orderID' ));
+        $userID=$orderDetails[0]->userID;
+        $user=User::all()->find($userID);
+        return view('admin.orderDetails.show', compact('orderDetails','status','orderID','user' ));
     }
 
     /**
