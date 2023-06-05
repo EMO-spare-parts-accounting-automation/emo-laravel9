@@ -107,11 +107,11 @@ Route::prefix('customer/orders')->group(function () {
     Route::controller(\App\Http\Controllers\Orders\OrdersController::class)->group(function () {
         //Route::get('create', 'create')->name('customer.orders.create');
         //Route::post('store', 'store')->name('customer.orders.store');
-        //Route::put('update/{product}', 'update')->name('customer.orders.update');
-        //Route::delete('delete/{product}', 'destroy')->name('customer.orders.destroy');
+        //Route::put('update/{order}', 'update')->name('customer.orders.update');
+        //Route::delete('delete/{order}', 'destroy')->name('customer.orders.destroy');
         Route::get('index', 'index')->name('customer.orders.index');
-        //Route::get('edit/{product}', 'edit')->name('customer.orders.edit');
-        //Route::get('show/{product}', 'show')->name('customer.orders.show');
+        //Route::get('edit/{order}', 'edit')->name('customer.orders.edit');
+        //Route::get('show/{order}', 'show')->name('customer.orders.show');
 
     });
 });
@@ -120,11 +120,23 @@ Route::prefix('customer/orderDetails')->group(function () {
     Route::controller(\App\Http\Controllers\Orders\OrderDetailsController::class)->group(function () {
         //Route::get('create', 'create')->name('customer.orders.create');
         //Route::post('store', 'store')->name('customer.orders.store');
-        //Route::put('update/{product}', 'update')->name('customer.orders.update');
-        //Route::delete('delete/{product}', 'destroy')->name('customer.orders.destroy');
+        //Route::put('update/{orderDetail}', 'update')->name('customer.orders.update');
+        //Route::delete('delete/{orderDetail}', 'destroy')->name('customer.orders.destroy');
        // Route::get('index', 'index')->name('customer.orderDetails.index');
-        //Route::get('edit/{product}', 'edit')->name('customer.orders.edit');
+        //Route::get('edit/{orderDetail}', 'edit')->name('customer.orders.edit');
         Route::get('show/{orderDetail}', 'show')->name('customer.orderDetails.show');
 
+    });
+});
+Route::prefix('admin/orders')->group(function () {
+    Route::controller(\App\Http\Controllers\Orders\AdminOrdersController::class)->group(function () {
+        Route::get('index', 'index')->name('admin.orders.index');
+        Route::put('update/{order}', 'update')->name('admin.orders.update');
+    });
+});
+
+Route::prefix('admin/orderDetails')->group(function () {
+    Route::controller(\App\Http\Controllers\Orders\AdminOrderDetailsController::class)->group(function () {
+        Route::get('show/{orderDetail}', 'show')->name('admin.orderDetails.show');
     });
 });
