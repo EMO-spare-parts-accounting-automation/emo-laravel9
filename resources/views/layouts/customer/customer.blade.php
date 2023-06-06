@@ -210,6 +210,10 @@
                     <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
                     İletişim
                 </a>
+                <a class="navbar-brand" href="{{ route('customer.returnproduct.index') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-refresh" style="position: relative ;left: 20px;"></span><br>
+                    İadeler
+                </a>
                 <a class="navbar-brand" href="{{ route('customer.campaigns.index') }}" style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-tags" style="position: relative ;left: 40px;"></span><br>
                     Kampanyalar

@@ -78,7 +78,7 @@
                 <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
                 İletişim
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+            <a class="navbar-brand" href="{{ route('admin.returnproduct.index') }}" style="position: relative ;bottom: 10px;">
                 <span class="glyphicon glyphicon-refresh" style="position: relative ;left: 20px;"></span><br>
                 İadeler
             </a>

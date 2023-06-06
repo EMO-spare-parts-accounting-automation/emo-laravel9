@@ -40,6 +40,7 @@
                 <td bgcolor="#303030"><label style="color: white">Adet</label></td>
                 <td bgcolor="#303030"><label style="color: white">Ürün Fiyatı</label></td>
                 <td bgcolor="#303030"><label style="color: white">Toplam</label></td>
+                <td bgcolor="#303030"><label style="color: white">İndirim</label></td>
 
 
             </tr>
@@ -51,6 +52,7 @@
                     <td style="position: relative;left: 10px;">{{$orderDetail['count']}}</td>
                     <td style="position: relative;left: 10px;">{{$orderDetail['cost']}}</td>
                     <td style="position: relative;left: 10px;">{{($orderDetail['cost']*$orderDetail['count'])}}</td>
+                    <td style="position: relative;left: 10px;">{{($orderDetail['campaignCost'])}}</td>
 
             @endforeach
 

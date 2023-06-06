@@ -158,3 +158,25 @@ Route::prefix('customer/campaigns')->group(function () {
         Route::get('index', 'index')->name('customer.campaigns.index');
     });
 });
+
+Route::prefix('customer/returnproduct')->group(function () {
+    Route::controller(\App\Http\Controllers\RetrunOrdersController::class)->group(function () {
+        Route::get('index', 'index')->name('customer.returnproduct.index');
+        Route::get('create/{id}', 'create')->name('customer.returnproduct.create');
+        Route::post('store/{id}', 'store')->name('customer.returnproduct.store');
+        Route::get('feedback/{id}', 'feedback')->name('customer.returnproduct.feedback');
+        Route::post('storefeedback/{id}', 'storefeedback')->name('customer.returnproduct.storefeedback');
+
+    });
+});
+
+Route::prefix('admin/returnproduct')->group(function () {
+    Route::controller(\App\Http\Controllers\AdminReturnOrderController::class)->group(function () {
+        Route::get('index', 'index')->name('admin.returnproduct.index');
+        Route::get('completedReturn/{id}', 'completedReturn')->name('admin.returnproduct.completedReturn');
+        Route::get('startReturn/{id}', 'startReturn')->name('admin.returnproduct.startReturn');
+        Route::get('feedback/{id}', 'feedback')->name('admin.returnproduct.feedback');
+        Route::post('store/{id}', 'store')->name('admin.returnproduct.store');
+
+    });
+});

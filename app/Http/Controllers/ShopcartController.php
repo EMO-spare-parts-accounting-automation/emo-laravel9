@@ -97,7 +97,7 @@ class ShopcartController extends Controller
         return $order->id;
     }
 
-    public function createNewOrderDetail($userID, $orderID, $productId, $count, $productCost, $totalCost)
+    public function createNewOrderDetail($userID, $orderID, $productId, $count, $productCost, $totalCost,$campaignCost)
     {
         $orderDetail = new OrderDetail();
         $orderDetail->userId = $userID;
@@ -106,6 +106,7 @@ class ShopcartController extends Controller
         $orderDetail->count = $count;
         $orderDetail->cost = $productCost;
         $orderDetail->totalCost = $totalCost;
+        $orderDetail->campaignCost=$campaignCost;
         $orderDetail->save();
 
     }
@@ -122,7 +123,6 @@ class ShopcartController extends Controller
                 $takenProduct->productcount = $productStock;
                 $takenProduct->save();
                 return redirect('/customer/shopcart/index')->with('addshopcartwarningstock', 'Sipariş etmek istediğiniz ürünler için stok yetersizdir! Mevcut stoğa göre ürün adediniz düzeltilmiştir!');
-
             }
         }
         $cost = $this->getTotalCost()-$campaignCost;
@@ -131,6 +131,18 @@ class ShopcartController extends Controller
             $user->save();
             $orderid = $this->createNewOrder($user->id, $cost,$campaignCost);  //hem yeni bir order oluşturdum hem de id sini aldım
             foreach ($takenProducts as $takenProduct) {
+                $this->campaignCost=0;
+                $campaingProduct=Campaign::where('productid',$takenProduct->productid)->get();
+                $hascampaign=$campaingProduct->isEmpty();
+                if($hascampaign){
+                }else{
+                    if($campaingProduct[0]->productcount<=$takenProduct->productcount){
+                        $productdetail=Product::query()->find($takenProduct->productid);
+                        $discount=(($campaingProduct[0]->productcount*$productdetail->listCost)*$campaingProduct[0]->discount)/100;
+                        $this->campaignCost+=$discount;
+                    }
+                }
+
                 $product = Product::where('id', $takenProduct->productid)->get();
                 $this->createNewOrderDetail(userID: $user->id,
                     orderID: $orderid,
@@ -138,12 +150,12 @@ class ShopcartController extends Controller
                     count: $takenProduct->productcount,
                     productCost: $product[0]->listCost,
                     totalCost: $cost,
+                    campaignCost:$this->campaignCost,
                 );
                 $product[0]->stock -= $takenProduct->productcount;
                 $product[0]->save();
             }
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
-            $this->campaignCost=0;
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
         }
 
