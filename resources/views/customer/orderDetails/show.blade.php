@@ -27,14 +27,23 @@
                     <td style="position: relative;left: 10px;">{{($orderDetail['cost']*$orderDetail['count'])}}</td>
                     <td style="position: relative;left: 10px;">{{($orderDetail['campaignCost'])}}</td>
                     @if($status==='Teslim edildi')
-                    <td style="width: 150px">
-                        <a href="{{route('customer.returnproduct.create',$orderDetail->id)}}">
-                            <button style="background-color: #3e606f">
-                                <span class="material-icons" style="color: white">rv_hookup</span>
-                                <label style="color: white">İade Başlat</label>
-                            </button>
-                        </a>
-                    </td>
+                            <?php
+                            $ReturnOrder=\App\Models\ReturnOrder::where('userid',$orderDetail['userID'])
+                                ->where('orderid',$orderDetail['orderID'])
+                                ->where('productid',$orderDetail['productId'])->get();
+                            $hasReturnOrder=$ReturnOrder->isEmpty();
+
+                            ?>
+                            @if($hasReturnOrder)
+                            <td style="width: 150px">
+                                <a href="{{route('customer.returnproduct.create',$orderDetail->id)}}">
+                                    <button style="background-color: #3e606f">
+                                        <span class="material-icons" style="color: white">rv_hookup</span>
+                                        <label style="color: white">İade Başlat</label>
+                                    </button>
+                                </a>
+                            </td>
+                            @endif
                    @endif
 
 

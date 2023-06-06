@@ -8,7 +8,7 @@ use App\Models\ReturnOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RetrunOrdersController extends Controller
+class ReturnOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -160,7 +160,7 @@ Route::prefix('customer/campaigns')->group(function () {
 });
 
 Route::prefix('customer/returnproduct')->group(function () {
-    Route::controller(\App\Http\Controllers\RetrunOrdersController::class)->group(function () {
+    Route::controller(\App\Http\Controllers\ReturnOrdersController::class)->group(function () {
         Route::get('index', 'index')->name('customer.returnproduct.index');
         Route::get('create/{id}', 'create')->name('customer.returnproduct.create');
         Route::post('store/{id}', 'store')->name('customer.returnproduct.store');
