@@ -24,7 +24,8 @@ class OrdersController extends Controller
     {
         $user=Auth::user();
         $orders=Order::where('userId',$user->id)
-        ->get();
+            ->orderBy('orderDate', 'desc')
+            ->get();
         $hasOrder=$orders->isEmpty();
         return view('customer.orders.index', compact('orders', 'hasOrder'));
     }

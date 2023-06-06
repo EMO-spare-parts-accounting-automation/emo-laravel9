@@ -19,7 +19,8 @@ class AdminOrdersController extends Controller
      */
     public function index()
     {
-        $orders=Order::all();
+        $orders = Order::orderBy('orderDate', 'desc')
+            ->get();
         $hasOrder=$orders->isEmpty();
         return view('admin.orders.index', compact('orders', 'hasOrder'));
     }
@@ -29,6 +30,7 @@ class AdminOrdersController extends Controller
         $orders = Order::where('id', 'LIKE', '%' . $query . '%')
             ->orWhere('userID', 'LIKE', '%' . $query . '%')
             ->orWhere('status', 'LIKE', '%' . $query . '%')
+            ->orderBy('orderDate', 'desc')
             ->get();
         $hasOrder = $orders->isEmpty();
         return view('admin.orders.index', compact('orders', 'hasOrder'));
