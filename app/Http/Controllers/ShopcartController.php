@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Campaign;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
@@ -18,7 +19,7 @@ class ShopcartController extends Controller
     {
         $this->middleware(['auth', 'role:customer']);
     }
-
+    public $campaignCost;
     public function getTotalCost()
     {
         $totalCost = 0;
@@ -29,6 +30,24 @@ class ShopcartController extends Controller
             $totalCost += ($listCost->listCost * $product->productcount);
         }
         return $totalCost;
+    }
+    public function getCampaigns($id){
+        $user = Auth::user();
+        $campaign=Campaign::query()->find($id);
+        $shopcartProducts=Shopcart::where('userid',$user->id)->where('productid',$campaign->productid)->get();
+        if($shopcartProducts->isEmpty()){
+            Shopcart::create([
+                'userid' => $user->id,
+                'productid' =>$campaign->productid,
+                'productcount' => $campaign->productcount,
+            ]);
+        }else{
+            $shopcartProducts[0]->productcount=$campaign->productcount;
+            $shopcartProducts[0]->save();
+        }
+
+
+        return redirect('/customer/shopcart/index')->with('addcampaign', 'Kapmanya Uygulandı!');
     }
 
     /**
@@ -41,28 +60,44 @@ class ShopcartController extends Controller
         $user = Auth::user();
         $ShopcartProducts = Shopcart::where('userid', 'LIKE', $user->id)->get();
         $products = [];
+        $this->campaignCost=0;
 
         foreach ($ShopcartProducts as $product) {
+            $campaingProduct=Campaign::where('productid',$product->productid)->get();
+            $hascampaign=$campaingProduct->isEmpty();
+            if($hascampaign){
+            }else{
+                if($campaingProduct[0]->productcount<=$product->productcount){
+                    $productdetail=Product::query()->find($product->productid);
+                    $discount=(($campaingProduct[0]->productcount*$productdetail->listCost)*$campaingProduct[0]->discount)/100;
+                    $this->campaignCost+=$discount;
+                }
+            }
             array_push($products, Product::query()->find($product->productid));
+
         }
+
+
+        $campaignCost=$this->campaignCost;
         $productcount = 0;
         $hasProduct = empty($products);
-        $totalCost = $this->getTotalCost();
-        return view('customer.shopcart', compact('products', 'hasProduct', 'ShopcartProducts', 'productcount', 'totalCost'));
+        $totalCost = $this->getTotalCost()-$campaignCost;
+        return view('customer.shopcart', compact('products','campaignCost', 'hasProduct', 'ShopcartProducts', 'productcount', 'totalCost'));
 
     }
 
-    public function createNewOrder($userId, $totalCost)
+    public function createNewOrder($userId, $totalCost,$campaignCost)
     {
         $order = new Order();
         $order->userId = $userId;
         $order->status = 'Kargoya verilmesi bekleniyor';
         $order->totalCost = $totalCost;
+        $order->discount=$campaignCost;
         $order->save();
         return $order->id;
     }
 
-    public function createNewOrderDetail($userID, $orderID, $productId, $count, $productCost, $totalCost)
+    public function createNewOrderDetail($userID, $orderID, $productId, $count, $productCost, $totalCost,$campaignCost)
     {
         $orderDetail = new OrderDetail();
         $orderDetail->userId = $userID;
@@ -71,11 +106,12 @@ class ShopcartController extends Controller
         $orderDetail->count = $count;
         $orderDetail->cost = $productCost;
         $orderDetail->totalCost = $totalCost;
+        $orderDetail->campaignCost=$campaignCost;
         $orderDetail->save();
 
     }
 
-    public function deletecart()
+    public function deletecart($campaignCost)
     {
         $user = Auth::user();
         $takenProducts = Shopcart::where('userid', $user->id)
@@ -87,29 +123,42 @@ class ShopcartController extends Controller
                 $takenProduct->productcount = $productStock;
                 $takenProduct->save();
                 return redirect('/customer/shopcart/index')->with('addshopcartwarningstock', 'Sipariş etmek istediğiniz ürünler için stok yetersizdir! Mevcut stoğa göre ürün adediniz düzeltilmiştir!');
-
             }
         }
-
-        $cost = $this->getTotalCost();
+        $cost = $this->getTotalCost()-$campaignCost;
         if ($user->balance >= $cost) {
             $user->balance -= $cost;
             $user->save();
-            $orderid = $this->createNewOrder($user->id, $cost);  //hem yeni bir order oluşturdum hem de id sini aldım
+            $orderid = $this->createNewOrder($user->id, $cost,$campaignCost);  //hem yeni bir order oluşturdum hem de id sini aldım
             foreach ($takenProducts as $takenProduct) {
+                $this->campaignCost=0;
+                $campaingProduct=Campaign::where('productid',$takenProduct->productid)->get();
+                $hascampaign=$campaingProduct->isEmpty();
+                if($hascampaign){
+                }else{
+                    if($campaingProduct[0]->productcount<=$takenProduct->productcount){
+                        $productdetail=Product::query()->find($takenProduct->productid);
+                        $discount=(($campaingProduct[0]->productcount*$productdetail->listCost)*$campaingProduct[0]->discount)/100;
+                        $this->campaignCost+=$discount;
+                    }
+                }
+
                 $product = Product::where('id', $takenProduct->productid)->get();
                 $this->createNewOrderDetail(userID: $user->id,
                     orderID: $orderid,
                     productId: $takenProduct->productid,
                     count: $takenProduct->productcount,
                     productCost: $product[0]->listCost,
-                    totalCost: $cost);
+                    totalCost: $cost,
+                    campaignCost:$this->campaignCost,
+                );
                 $product[0]->stock -= $takenProduct->productcount;
                 $product[0]->save();
             }
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
         }
+
         return redirect('/customer/shopcart/index')->with('addshopcartwarning', 'Yetersiz Bakiye!');
 
     }

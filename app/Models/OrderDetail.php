@@ -14,6 +14,7 @@ class OrderDetail extends Model
         'count',
         'cost',
         'totalCost',
+        'campaignCost'
 
     ];
     protected $table='order_details';

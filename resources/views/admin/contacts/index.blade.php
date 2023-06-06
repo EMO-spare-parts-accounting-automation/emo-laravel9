@@ -57,7 +57,7 @@
         <a href="{{route('admin.contacts.create')}}" class="button">
             <span>+ Yeni iletişim ekle</span>
         </a>
-    </div>
+        </div>
     @else
         <div style="position: relative;left: 85%">
             <a href="{{route('admin.contacts.create')}}" class="button">

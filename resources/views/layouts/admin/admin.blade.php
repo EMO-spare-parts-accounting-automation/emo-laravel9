@@ -19,6 +19,7 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--#tüm sayfalarda geçerli arkaplan oluşturuldu(layout aracılığıyla)! -->
     <style>
         body {
@@ -77,11 +78,11 @@
                 <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
                 İletişim
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+            <a class="navbar-brand" href="{{ route('admin.returnproduct.index') }}" style="position: relative ;bottom: 10px;">
                 <span class="glyphicon glyphicon-refresh" style="position: relative ;left: 20px;"></span><br>
                 İadeler
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}" style="position: relative ;bottom: 10px;">
+            <a class="navbar-brand" href="{{ route('admin.campaigns.index') }}" style="position: relative ;bottom: 10px;">
                 <span class="glyphicon glyphicon-tags" style="position: relative ;left: 40px;"></span><br>
                 Kampanyalar
             </a>

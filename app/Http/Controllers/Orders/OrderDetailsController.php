@@ -55,7 +55,8 @@ class OrderDetailsController extends Controller
         $orderDetails=OrderDetail::where('orderId',$id)->get();
         $order=Order::all()->find($id);
         $status=$order->status;
-        return view('customer.orderDetails.show', compact('orderDetails','status' ));
+        $discount=$order->discount;
+        return view('customer.orderDetails.show', compact('orderDetails','status','discount' ));
     }
 
     /**

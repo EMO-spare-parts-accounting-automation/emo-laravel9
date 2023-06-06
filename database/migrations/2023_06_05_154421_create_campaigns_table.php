@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userId');
-            $table->timestamp('orderDate')->useCurrent();
-            $table->string('status');
-            $table->double('totalCost');
-            $table->double('discount');
+            $table->integer('productid');
+            $table->integer('productcount');
+            $table->integer('discount');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('campaigns');
     }
 };

@@ -27,11 +27,11 @@
 
             }
 
-            img {
+            .img-credit {
                 transform: translate(160px, -10px);
             }
 
-            img:hover {
+            .img-credit:hover {
                 cursor: pointer;
             }
 
@@ -85,7 +85,7 @@
                             <p class="text-warning mb-0">Kart No:</p>
                             <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="16" id="cno"
                                    minlength="16" maxlength="16" required>
-                            <img src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px"/>
+                            <img class="img-credit" src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px"/>
                         </div>
 
                         <div class="form-group">

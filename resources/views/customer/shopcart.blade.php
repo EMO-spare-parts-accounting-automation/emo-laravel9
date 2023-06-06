@@ -8,6 +8,13 @@
         </div>
 
     @endif
+    @if(Session::has('addcampaign'))
+
+        <div class="alert alert-success">
+            {{ Session::get('addcampaign') }}
+        </div>
+
+    @endif
     @if(Session::has('addshopcartwarning'))
 
         <div class="alert alert-warning">
@@ -103,10 +110,12 @@
         </center>
 
         <div style="position: relative;left: 70%;top:50px;width: 250px">
+            <h3 style="height: 10px"><span class="glyphicon glyphicon-tag" style="position: relative;left: -50px;top:51px;"></span></h3>
+            <h3 style="height: 10px;position: relative;bottom:-20px;"> indirim = {{$campaignCost}} TL</h3>
             <h3><span class="glyphicon glyphicon-credit-card" style="position: relative;left: -50px;top:51px;"></span></h3>
             <h3> Tutar = {{$totalCost}} TL</h3>
 
-            @include('ui_helper.updateButton',['route'=>route('customer.shopcart.deletecart'),
+            @include('ui_helper.updateButton',['route'=>route('customer.shopcart.deletecart',$campaignCost),
                             'text'=>'Sepeti Onayla!',
                             'bgColor'=>"#0000ff" ,
                             'textColor'=>"#ffffff"])

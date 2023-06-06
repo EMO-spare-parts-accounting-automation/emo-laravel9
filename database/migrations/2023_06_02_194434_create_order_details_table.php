@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('count');
             $table->double('cost');
             $table->double('totalCost');
+            $table->double('campaignCost');
             $table->timestamps();
         });
     }
