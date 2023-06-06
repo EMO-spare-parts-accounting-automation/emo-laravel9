@@ -22,6 +22,7 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-..." crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
             background-repeat: no-repeat;
@@ -208,6 +209,10 @@
                    style="position: relative ;bottom: 10px;">
                     <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
                     İletişim
+                </a>
+                <a class="navbar-brand" href="{{ route('customer.campaigns.index') }}" style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-tags" style="position: relative ;left: 40px;"></span><br>
+                    Kampanyalar
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -95,11 +95,12 @@ Route::prefix('customer/shopcart')->group(function () {
     Route::controller(\App\Http\Controllers\ShopcartController::class)->group(function () {
         Route::get('index', 'index')->name('customer.shopcart.index');
         Route::get('addshopcart/{id}', [\App\Http\Controllers\ShopcartController::class, 'addshopcart'])->name('customer.shopcart.addshopcart');
-        Route::get('deletecart', 'deletecart')->name('customer.shopcart.deletecart');
+        Route::get('deletecart/{campaignCost}', 'deletecart')->name('customer.shopcart.deletecart');
         Route::delete('delete/{id}', [\App\Http\Controllers\ShopcartController::class, 'destroy'])->name('customer.shopcart.destroy');
         Route::get('increaseCount/{id}', 'increaseCount')->name('customer.shopcart.increaseCount');
         Route::get('decreaseCount/{id}', 'decreaseCount')->name('customer.shopcart.decreaseCount');
         Route::put('updateProductCount/{id}', 'updateProductCount')->name('customer.shopcart.updateProductCount');
+        Route::get('getCampaigns/{id}', 'getCampaigns')->name('customer.shopcart.getCampaigns');
     });
 });
 
@@ -138,5 +139,22 @@ Route::prefix('admin/orders')->group(function () {
 Route::prefix('admin/orderDetails')->group(function () {
     Route::controller(\App\Http\Controllers\Orders\AdminOrderDetailsController::class)->group(function () {
         Route::get('show/{orderDetail}', 'show')->name('admin.orderDetails.show');
+    });
+});
+
+Route::prefix('admin/campaigns')->group(function () {
+    Route::controller(\App\Http\Controllers\campaigns\CampaignsController::class)->group(function () {
+        Route::get('index', 'index')->name('admin.campaigns.index');
+        Route::get('create', 'create')->name('admin.campaigns.create');
+        Route::post('store', 'store')->name('admin.campaigns.store');
+        Route::put('update/{campaign}', 'update')->name('admin.campaigns.update');
+        Route::get('edit/{id}', 'edit')->name('admin.campaigns.edit');
+        Route::delete('delete/{id}', 'destroy')->name('admin.campaigns.destroy');
+    });
+});
+
+Route::prefix('customer/campaigns')->group(function () {
+    Route::controller(\App\Http\Controllers\campaigns\CustomercampaignsController::class)->group(function () {
+        Route::get('index', 'index')->name('customer.campaigns.index');
     });
 });
