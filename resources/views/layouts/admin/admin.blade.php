@@ -275,8 +275,8 @@
                     <li><a href="{{route('admin.orders.index')}}">Siparişler</a></li>
                     <li><a href="{{route('admin.products.create')}}">Ürün Ekle</a></li>
                     <li><a href="{{route('admin.contacts.index')}}">İletişim</a></li>
-                    <li><a href="#">İadeler</a></li>
-                    <li><a href="#">Kampanyalar</a></li>
+                    <li><a href="{{route('admin.returnproduct.index')}}">İadeler</a></li>
+                    <li><a href="{{route('admin.campaigns.index')}}">Kampanyalar</a></li>
                     <li><a href="{{route('admin.customerlist')}}">Müşteriler</a></li>
                 </ul>
             </div>

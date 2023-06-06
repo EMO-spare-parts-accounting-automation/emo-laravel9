@@ -435,6 +435,8 @@
                     <li><a href="{{route('customer.payment')}}">Ödeme</a></li>
                     <li><a href="{{route('customer.contacts.index')}}">İletişim</a></li>
                     <li><a href="{{route('customer.shopcart.index')}}">Sepet</a></li>
+                    <li><a href="{{route('customer.returnproduct.index')}}">İadeler</a></li>
+                    <li><a href="{{route('customer.campaigns.index')}}">Kampanyalar</a></li>
                 </ul>
             </div>
             <div class="footer-column">
