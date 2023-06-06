@@ -302,5 +302,164 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+
+
+
+
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    header {
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .content {
+        min-height: 40vh;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 0;
+
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer-column {
+        flex: 1 1 300px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #ccc;
+        line-height: 1.5;
+        font-size: 20px;
+    }
+
+    .social-media {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .social-icon {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        color: #333;
+        border-radius: 50%;
+        line-height: 40px;
+        margin-right: 10px;
+        font-size: 18px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background-color: #ccc;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+    ul li a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    .copy-text {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+
+</style>
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+<div class="content">
+    <!-- Sayfa içeriği arada boşluk kalsın diye ekledim -->
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h2>Linkler</h2>
+                <ul>
+                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="{{route('customer.orders.index')}}">Siparişlerim</a></li>
+                    <li><a href="{{route('customer.payment')}}">Ödeme</a></li>
+                    <li><a href="{{route('customer.contacts.index')}}">İletişim</a></li>
+                    <li><a href="{{route('customer.shopcart.index')}}">Sepet</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h2>İletişim</h2>
+                <p>Adres:Şanlıurfa/Merkez Türkiye</p>
+                <p>Telefon: 123-456-7890</p>
+                <p>E-posta:<a href="https://www.emo.org.tr/">www.emo.org.tr</a></p>
+            </div>
+            <div class="footer-column">
+                <h2>Hakkımızda</h2>
+                <p>EMO Şirketi, oto yedek parça sektöründe uzmanlaşmış bir e-ticaret platformudur. Müşterilerimize kaliteli ve orijinal yedek parçaları uygun fiyatlarla sunmayı hedefliyoruz. Geniş ürün yelpazemiz ve güvenilir tedarikçi ağımız ile aradığınız parçaları kolayca bulmanızı sağlıyoruz. Müşteri memnuniyeti bizim önceliğimizdir ve her adımda müşterilerimize en iyi hizmeti sunmaya çalışıyoruz. </p>
+            </div>
+
+
+            <div class="footer-column">
+                <div class="social-media">
+                    <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linked.com/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copy-text">Telif Hakkı &copy; 2023 | EMO Şirketi</p>
+    </div>
+</footer>
+
+</body>
+
+
+
+
+
+
 </body>
 </html>
