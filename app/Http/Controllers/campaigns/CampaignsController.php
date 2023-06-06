@@ -5,6 +5,7 @@ namespace App\Http\Controllers\campaigns;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Contact;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CampaignsController extends Controller
@@ -31,12 +32,22 @@ class CampaignsController extends Controller
     }
     public function store(Request $request)
     {
-        $campaign=new Campaign();
-        $campaign->productid=$request->productid;
-        $campaign->productcount=$request->productcount;
-        $campaign->discount=$request->discount;
-        $campaign->save();
-        return redirect('admin/campaigns/index');
+        $product=Product::query()->find($request->productid);
+        if(empty($product)){
+            return redirect('admin/campaigns/index')->with('invalidProduct','Geçersiz parça kodu girildi/Parça mevcut değil');
+        }else{
+            $campaign=new Campaign();
+            $campaign->productid=$request->productid;
+            $campaign->productcount=$request->productcount;
+            $campaign->discount=$request->discount;
+            $campaign->save();
+            return redirect('admin/campaigns/index');
+        }
+
+
+
+
+
     }
     public function edit($id)
     {

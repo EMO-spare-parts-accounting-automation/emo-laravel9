@@ -49,6 +49,13 @@
     </style>
 </head>
 <body>
+@if(Session::has('invalidProduct'))
+
+    <div class="alert alert-danger">
+        {{ Session::get('invalidProduct') }}
+    </div>
+
+@endif
     <center>
         <div style="position: relative;">
             <a href="{{route('admin.campaigns.create')}}" class="button">
