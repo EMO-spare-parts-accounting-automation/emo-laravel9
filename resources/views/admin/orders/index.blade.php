@@ -8,6 +8,10 @@
     @else
 
         <center>
+            <form method="GET" action="{{route('admin.orders.search')}}">
+                <input type="search" name="orderSearch" value="" placeholder="Durum,SiparişNO,MüşteriNO">
+                <input type="submit" value="Ara">
+            </form>
         <table border="1" style="position: relative;top: 100px;width: 1300px">
             <tr>
                 <td bgcolor="#303030" style="padding: 5px;margin: 5px"><label style="color: white">Sipariş Numarası</label></td>

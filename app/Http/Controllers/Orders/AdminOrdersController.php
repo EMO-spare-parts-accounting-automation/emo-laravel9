@@ -23,7 +23,16 @@ class AdminOrdersController extends Controller
         $hasOrder=$orders->isEmpty();
         return view('admin.orders.index', compact('orders', 'hasOrder'));
     }
-
+    public function search(Request $request)
+    {
+        $query = $request->orderSearch;
+        $orders = Order::where('id', 'LIKE', '%' . $query . '%')
+            ->orWhere('userID', 'LIKE', '%' . $query . '%')
+            ->orWhere('status', 'LIKE', '%' . $query . '%')
+            ->get();
+        $hasOrder = $orders->isEmpty();
+        return view('admin.orders.index', compact('orders', 'hasOrder'));
+    }
     /**
      * Show the form for creating a new resource.
      *

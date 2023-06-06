@@ -28,7 +28,6 @@ class OrdersController extends Controller
         $hasOrder=$orders->isEmpty();
         return view('customer.orders.index', compact('orders', 'hasOrder'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

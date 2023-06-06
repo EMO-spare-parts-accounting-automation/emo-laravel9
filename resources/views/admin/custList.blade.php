@@ -2,7 +2,7 @@
 
 @section('content')
     @if(!$isempty)
-        <div class="kullaniciArama" style="position: center;align-items: center;align-content: center;text-align: center">
+        <div class="kullaniciArama" style="align-items: center;align-content: center;text-align: center">
             <form method="GET" action="{{route('admin.customerlist.search')}}">
                 <input type="search" name="search" placeholder="Kullanici Arayın!">
                 <button type="submit">Ara</button>
