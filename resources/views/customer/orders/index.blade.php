@@ -14,6 +14,7 @@
                 <td bgcolor="#303030"><label style="color: white">Tarih</label></td>
                 <td bgcolor="#303030"><label style="color: white">Durum</label></td>
                 <td bgcolor="#303030"><label style="color: white">Tutar</label></td>
+                <td bgcolor="#303030"><label style="color: white">İndirim</label></td>
                 <td bgcolor="#303030" style="padding-left: 40px"><label style="color: white">Detay</label></td>
 
             </tr>
@@ -50,6 +51,13 @@
                         <a style="color: black;" href="{{route('customer.orderDetails.show',$order->id)}}">
                             <div>
                                 {{$order['totalCost']}}
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a style="color: black;" href="{{route('customer.orderDetails.show',$order->id)}}">
+                            <div>
+                                {{$order['discount']}}
                             </div>
                         </a>
                     </td>

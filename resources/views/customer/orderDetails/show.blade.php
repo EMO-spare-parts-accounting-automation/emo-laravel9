@@ -28,8 +28,10 @@
         </table>
 
     </center>
+    <h3><span class="glyphicon glyphicon-tags" style="position: relative;left: 1100px;top: 50px;">
+                  indirim= -{{$discount}} TL</span></h3>
         <h3><span class="glyphicon glyphicon-credit-card" style="position: relative;left: 1100px;top: 50px;">
-                  Genel Toplam={{$orderDetail->totalCost}}</span></h3>
+                  Genel Toplam={{$orderDetail->totalCost}} TL</span></h3>
 
 
 

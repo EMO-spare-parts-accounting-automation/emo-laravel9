@@ -50,16 +50,17 @@
 </head>
 <body>
     <center>
+        <div style="position: relative;">
+            <a href="{{route('admin.campaigns.create')}}" class="button">
+                <span><span class="glyphicon glyphicon-plus-sign" style="position: relative;"></span> Yeni kampanya ekle</span>
+            </a>
+        </div>
         @if($hascampaigns)
             <h3 style="text-align: center;position: relative;top:100px;">
                 <i class="material-icons" style="font-size: 60px">campaign</i> <label style="position: relative;top:-20px"> Üzgünüz Şuan Kampanya Bulunmamaktadır!</label>
             </h3>
         @else
-            <div style="position: relative;">
-                <a href="{{route('admin.campaigns.create')}}" class="button">
-                    <span><span class="glyphicon glyphicon-plus-sign" style="position: relative;"></span> Yeni kampanya ekle</span>
-                </a>
-            </div>
+
             <table>
                 <tr>
                     <td></td>

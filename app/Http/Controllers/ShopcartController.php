@@ -86,12 +86,13 @@ class ShopcartController extends Controller
 
     }
 
-    public function createNewOrder($userId, $totalCost)
+    public function createNewOrder($userId, $totalCost,$campaignCost)
     {
         $order = new Order();
         $order->userId = $userId;
         $order->status = 'Kargoya verilmesi bekleniyor';
         $order->totalCost = $totalCost;
+        $order->discount=$campaignCost;
         $order->save();
         return $order->id;
     }
@@ -128,7 +129,7 @@ class ShopcartController extends Controller
         if ($user->balance >= $cost) {
             $user->balance -= $cost;
             $user->save();
-            $orderid = $this->createNewOrder($user->id, $cost);  //hem yeni bir order oluşturdum hem de id sini aldım
+            $orderid = $this->createNewOrder($user->id, $cost,$campaignCost);  //hem yeni bir order oluşturdum hem de id sini aldım
             foreach ($takenProducts as $takenProduct) {
                 $product = Product::where('id', $takenProduct->productid)->get();
                 $this->createNewOrderDetail(userID: $user->id,
@@ -136,7 +137,8 @@ class ShopcartController extends Controller
                     productId: $takenProduct->productid,
                     count: $takenProduct->productcount,
                     productCost: $product[0]->listCost,
-                    totalCost: $cost);
+                    totalCost: $cost,
+                );
                 $product[0]->stock -= $takenProduct->productcount;
                 $product[0]->save();
             }

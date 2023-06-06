@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('orderDate')->useCurrent();
             $table->string('status');
             $table->double('totalCost');
+            $table->double('discount');
             $table->timestamps();
         });
     }

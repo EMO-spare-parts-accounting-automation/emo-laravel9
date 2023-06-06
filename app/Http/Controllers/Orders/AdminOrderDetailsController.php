@@ -59,7 +59,8 @@ class AdminOrderDetailsController extends Controller
         $orderID=$id;
         $userID=$orderDetails[0]->userID;
         $user=User::all()->find($userID);
-        return view('admin.orderDetails.show', compact('orderDetails','status','orderID','user' ));
+        $discount=$order->discount;
+        return view('admin.orderDetails.show', compact('orderDetails','status','orderID','user' ,'discount'));
     }
 
     /**
