@@ -17,7 +17,8 @@
                                     <fieldset>
                                         <label class="col-md-4 col-form-label">Parça kodu</label>
                                         <div class="col-md-9">
-                                            <input type="number" class=form-control name="productid" value="{{$campaign->productid}}"
+                                            <input type="number" class=form-control name="productid"
+                                                   value="{{$campaign->productid}}"
                                                    placeholder="Parça kodunu giriniz" maxlength="20" autofous required>
                                         </div>
                                     </fieldset>
@@ -26,7 +27,8 @@
                                     <fieldset>
                                         <label class="col-md-4 col-form-label ">Kampanya şart adedi</label>
                                         <div class="col-md-9">
-                                            <input type="number" class=form-control name="productcount" value="{{$campaign->productcount}}"
+                                            <input type="number" class=form-control name="productcount"
+                                                   value="{{$campaign->productcount}}"
                                                    placeholder="Kampanya adedi giriniz" autofous required maxlength="4">
                                         </div>
                                     </fieldset>
@@ -35,8 +37,10 @@
                                     <fieldset>
                                         <label class="col-md-4 col-form-label">Kampanya yüzdesi</label>
                                         <div class="col-md-9">
-                                            <input type="number" class=form-control name="discount" value="{{$campaign->discount}}"
-                                                   placeholder="Kampanya yüzdesini girniz" maxlength="3" autofous required>
+                                            <input type="number" class=form-control name="discount"
+                                                   value="{{$campaign->discount}}"
+                                                   placeholder="Kampanya yüzdesini girniz" maxlength="3" autofous
+                                                   required>
                                         </div>
                                     </fieldset>
                                 </div>

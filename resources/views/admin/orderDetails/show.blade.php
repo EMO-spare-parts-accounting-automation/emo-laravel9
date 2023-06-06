@@ -26,7 +26,8 @@
         position: relative;bottom: 20px;left: 30%;
         width: 400px;height: 80px;background-color: #d1dbbd;">
             <h3><label style="position: relative;bottom: 60px;right: 20px"><b><strong>Müşteri</strong></b></label></h3>
-            <h3><span class="glyphicon glyphicon-user" style="position: relative;left: -170px;top:-60px;font-size: 50px"></span></h3>
+            <h3><span class="glyphicon glyphicon-user"
+                      style="position: relative;left: -170px;top:-60px;font-size: 50px"></span></h3>
             <h3>
                 <label style="position: relative;bottom: 140px;right: 20px">{{$user->id}}-{{$user->name}}</label><br>
             </h3>

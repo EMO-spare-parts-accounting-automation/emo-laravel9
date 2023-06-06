@@ -15,7 +15,7 @@ class Contact extends Model
         'phone',
         'city',
     ];
-    protected $table='contacts';
+    protected $table = 'contacts';
 
 
 }

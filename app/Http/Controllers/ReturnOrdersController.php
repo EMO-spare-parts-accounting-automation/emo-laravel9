@@ -14,6 +14,7 @@ class ReturnOrdersController extends Controller
     {
         $this->middleware(['auth', 'role:customer']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +23,10 @@ class ReturnOrdersController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $returnOrders=ReturnOrder::where('userid',$user->id)->get();
-        $hasReturnOrder=$returnOrders->isEmpty();
+        $returnOrders = ReturnOrder::where('userid', $user->id)->get();
+        $hasReturnOrder = $returnOrders->isEmpty();
 
-        return view('customer.returnProduct.index',compact('returnOrders','hasReturnOrder'));
+        return view('customer.returnProduct.index', compact('returnOrders', 'hasReturnOrder'));
 
     }
 
@@ -36,20 +37,20 @@ class ReturnOrdersController extends Controller
      */
     public function create($id)
     {
-        return view('customer.returnProduct.create',compact('id'));
+        return view('customer.returnProduct.create', compact('id'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
-        $orderDetails=OrderDetail::query()->find($id);
+        $orderDetails = OrderDetail::query()->find($id);
 
-        $returnProduct=new ReturnOrder();
+        $returnProduct = new ReturnOrder();
         $returnProduct->userid = $orderDetails->userID;
         $returnProduct->orderid = $orderDetails->orderID;
         $returnProduct->productid = $orderDetails->productId;
@@ -57,17 +58,20 @@ class ReturnOrdersController extends Controller
         $returnProduct->returncost = $request->returncost;
         $returnProduct->refreshproduct = $request->refreshproduct;
         $returnProduct->save();
-        return redirect('customer/returnproduct/index')->with('added','İade Talebiniz Alınmıştır');
+        return redirect('customer/returnproduct/index')->with('added', 'İade Talebiniz Alınmıştır');
     }
+
     public function feedback($id)
     {
-        return view('customer.returnProduct.updateFeedback',compact('id'));
+        return view('customer.returnProduct.updateFeedback', compact('id'));
     }
-    public function storefeedback(Request $request,$id){
-        $returnOrders=ReturnOrder::query()->find($id);
-        $returnOrders->customerfeedback=$request->customerfeedback;
+
+    public function storefeedback(Request $request, $id)
+    {
+        $returnOrders = ReturnOrder::query()->find($id);
+        $returnOrders->customerfeedback = $request->customerfeedback;
         $returnOrders->save();
-        return redirect('customer/returnproduct/index')->with('feedback','Geribildirim oluşturuldu!');
+        return redirect('customer/returnproduct/index')->with('feedback', 'Geribildirim oluşturuldu!');
     }
 
 }

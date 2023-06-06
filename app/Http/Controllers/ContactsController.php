@@ -22,17 +22,16 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts=Contact::all();
-        $i=1;
-        foreach ($contacts as $contact){
-            $contact->id=$i;
-            $i=$i+1;
+        $contacts = Contact::all();
+        $i = 1;
+        foreach ($contacts as $contact) {
+            $contact->id = $i;
+            $i = $i + 1;
             $contact->save();
         }
-        $hasContact=$contacts->isEmpty();
-        return view('admin.contacts.index',compact('contacts','hasContact'));
+        $hasContact = $contacts->isEmpty();
+        return view('admin.contacts.index', compact('contacts', 'hasContact'));
     }
-
 
 
     /**
@@ -48,17 +47,17 @@ class ContactsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $contact=new Contact();
-        $contact->name=$request->name;
-        $contact->surname=$request->surname;
-        $contact->mail=$request->mail;
-        $contact->phone=$request->phone;
-        $contact->city=$request->city;
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->surname = $request->surname;
+        $contact->mail = $request->mail;
+        $contact->phone = $request->phone;
+        $contact->city = $request->city;
         $contact->save();
         return redirect('admin/contacts/index');
     }
@@ -66,7 +65,7 @@ class ContactsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,30 +76,30 @@ class ContactsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $contact=Contact::all()->find($id);
-        return view('admin.contacts.edit',compact('contact'));
+        $contact = Contact::all()->find($id);
+        return view('admin.contacts.edit', compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $contact=Contact::all()->find($id);
-        $contact->name=$request->name;
-        $contact->surname=$request->surname;
-        $contact->mail=$request->mail;
-        $contact->phone=$request->phone;
-        $contact->city=$request->city;
+        $contact = Contact::all()->find($id);
+        $contact->name = $request->name;
+        $contact->surname = $request->surname;
+        $contact->mail = $request->mail;
+        $contact->phone = $request->phone;
+        $contact->city = $request->city;
         $contact->save();
         return redirect('admin/contacts/index');
     }
@@ -108,7 +107,7 @@ class ContactsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

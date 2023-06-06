@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();                                              #giriş yapan kullanıcı bilgisi home page e gönderilmek için user değişkenine gönderildi
-        return view('home',compact('user'));               #home page e yönlendirildi
+        $user = Auth::user();                                              #giriş yapan kullanıcı bilgisi home page e gönderilmek için user değişkenine gönderildi
+        return view('home', compact('user'));               #home page e yönlendirildi
     }
 }

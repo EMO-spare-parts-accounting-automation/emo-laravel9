@@ -13,9 +13,11 @@ class PaymentController extends Controller
     {
         $this->middleware(['auth', 'role:customer']);
     }
-    public function addbalance(Request $request){
-        $user=Auth::user();
-        $user->balance+=$request->balance;
+
+    public function addbalance(Request $request)
+    {
+        $user = Auth::user();
+        $user->balance += $request->balance;
         $user->save();
         return redirect('/customer/payment')->with('addbalance', 'Ödenen tutar bakiyenize eklendi!');
     }
