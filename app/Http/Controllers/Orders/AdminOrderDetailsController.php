@@ -14,6 +14,7 @@ class AdminOrderDetailsController extends Controller
     {
         $this->middleware(['auth', 'role:admin']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +38,7 @@ class AdminOrderDetailsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,25 +49,25 @@ class AdminOrderDetailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $orderDetails=OrderDetail::where('orderId',$id)->get();
-        $order=Order::all()->find($id);
-        $status=$order->status;
-        $orderID=$id;
-        $userID=$orderDetails[0]->userID;
-        $user=User::all()->find($userID);
-        $discount=$order->discount;
-        return view('admin.orderDetails.show', compact('orderDetails','status','orderID','user' ,'discount'));
+        $orderDetails = OrderDetail::where('orderId', $id)->get();
+        $order = Order::all()->find($id);
+        $status = $order->status;
+        $orderID = $id;
+        $userID = $orderDetails[0]->userID;
+        $user = User::all()->find($userID);
+        $discount = $order->discount;
+        return view('admin.orderDetails.show', compact('orderDetails', 'status', 'orderID', 'user', 'discount'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +78,8 @@ class AdminOrderDetailsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +90,7 @@ class AdminOrderDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

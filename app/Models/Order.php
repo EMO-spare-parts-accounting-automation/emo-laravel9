@@ -14,7 +14,7 @@ class Order extends Model
         'totalCost',
         'discount',
     ];
-    protected $table='orders';
+    protected $table = 'orders';
 
 
 }

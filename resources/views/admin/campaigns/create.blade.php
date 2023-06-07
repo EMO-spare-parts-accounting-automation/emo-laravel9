@@ -26,7 +26,8 @@
                                         <label class="col-md-4 col-form-label ">Kampanya şart adedi</label>
                                         <div class="col-md-9">
                                             <input type="number" class=form-control name="productcount"
-                                                   placeholder="Kampanya adedi giriniz" autofous required maxlength="4">
+                                                   placeholder="Kampanya adedi giriniz" autofous required maxlength="4"
+                                                   required>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -35,7 +36,8 @@
                                         <label class="col-md-4 col-form-label">Kampanya yüzdesi</label>
                                         <div class="col-md-9">
                                             <input type="number" class=form-control name="discount"
-                                                   placeholder="Kampanya yüzdesini girniz" maxlength="3" autofous required>
+                                                   placeholder="Kampanya yüzdesini girniz" maxlength="3" autofous
+                                                   required>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -55,7 +57,5 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection

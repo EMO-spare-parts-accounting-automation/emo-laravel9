@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ReturnOrder extends Model
 {
     use HasFactory;
-    protected $fillable=[
+
+    protected $fillable = [
         'userid',
         'orderid',
         'productid',

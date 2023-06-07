@@ -132,6 +132,7 @@ Route::prefix('customer/orderDetails')->group(function () {
 Route::prefix('admin/orders')->group(function () {
     Route::controller(\App\Http\Controllers\Orders\AdminOrdersController::class)->group(function () {
         Route::get('index', 'index')->name('admin.orders.index');
+        Route::get('search', 'search')->name('admin.orders.search');
         Route::put('update/{order}', 'update')->name('admin.orders.update');
     });
 });

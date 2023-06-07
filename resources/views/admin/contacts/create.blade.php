@@ -43,7 +43,7 @@
                                     <fieldset>
                                         <label class="col-md-4 col-form-label">Telefon Numarası</label>
                                         <div class="col-md-9">
-                                            <input type="number"  name="phone" placeholder="(___)(_______)"
+                                            <input type="number" name="phone" placeholder="(___)(_______)"
                                                    class=form-control maxlength="10" autofous required>
                                         </div>
                                     </fieldset>
@@ -76,7 +76,5 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection

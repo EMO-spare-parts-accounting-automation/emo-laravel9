@@ -12,6 +12,7 @@ class AdminOrdersController extends Controller
     {
         $this->middleware(['auth', 'role:admin']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +20,21 @@ class AdminOrdersController extends Controller
      */
     public function index()
     {
-        $orders=Order::all();
-        $hasOrder=$orders->isEmpty();
+        $orders = Order::orderBy('orderDate', 'desc')
+            ->get();
+        $hasOrder = $orders->isEmpty();
+        return view('admin.orders.index', compact('orders', 'hasOrder'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->orderSearch;
+        $orders = Order::where('id', 'LIKE', '%' . $query . '%')
+            ->orWhere('userID', 'LIKE', '%' . $query . '%')
+            ->orWhere('status', 'LIKE', '%' . $query . '%')
+            ->orderBy('orderDate', 'desc')
+            ->get();
+        $hasOrder = $orders->isEmpty();
         return view('admin.orders.index', compact('orders', 'hasOrder'));
     }
 
@@ -37,7 +51,7 @@ class AdminOrdersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +62,7 @@ class AdminOrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +73,7 @@ class AdminOrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,14 +84,14 @@ class AdminOrdersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $order=Order::all()->find($id);
-        $order->status=$request->status;
+        $order = Order::all()->find($id);
+        $order->status = $request->status;
         $order->save();
         return redirect()->back();
     }
@@ -85,7 +99,7 @@ class AdminOrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

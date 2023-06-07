@@ -12,18 +12,19 @@ class CustomercampaignsController extends Controller
     {
         $this->middleware(['auth', 'role:customer']);
     }
-    public function index(){
-        $campaigns=Campaign::all();
-        $i=1;
-        foreach ($campaigns as $campaign){
-            $campaign->id=$i;
-            $i=$i+1;
+
+    public function index()
+    {
+        $campaigns = Campaign::all();
+        $i = 1;
+        foreach ($campaigns as $campaign) {
+            $campaign->id = $i;
+            $i = $i + 1;
             $campaign->save();
         }
-        $hascampaigns=$campaigns->isEmpty();
-        return view('customer.campaigns.campaigns',compact('campaigns','hascampaigns'));
+        $hascampaigns = $campaigns->isEmpty();
+        return view('customer.campaigns.campaigns', compact('campaigns', 'hascampaigns'));
     }
-
 
 
 }

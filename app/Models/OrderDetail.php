@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     use HasFactory;
+
     protected $fillable = ['userId',
         'orderID',
         'productId',
@@ -17,6 +18,6 @@ class OrderDetail extends Model
         'campaignCost'
 
     ];
-    protected $table='order_details';
+    protected $table = 'order_details';
 
 }

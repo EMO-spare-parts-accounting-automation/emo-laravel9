@@ -39,6 +39,10 @@
         }
         figure {
             display:flex;
+            position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .img-emo {
@@ -48,6 +52,15 @@
             border: 1px solid #999;
             object-fit: cover;
             object-position: 50% 15%;
+        }
+        .img-home{
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
+            border: 1px solid #999;
+            object-fit: cover;
+            object-position: 50% 50%;
+            opacity: 0.3;
         }
     </style>
 
@@ -196,7 +209,7 @@
         margin-bottom: 20px;
     }
 
-    h2 {
+    .h2 {
         color: #fff;
         font-size: 30px;
         margin-bottom: 10px;
@@ -269,25 +282,25 @@
     <div class="container">
         <div class="footer-row">
             <div class="footer-column">
-                <h2>Linkler</h2>
+                <h2 class="h2">Linkler</h2>
                 <ul>
-                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="{{route('home')}}">Anasayfa</a></li>
                     <li><a href="{{route('admin.orders.index')}}">Siparişler</a></li>
                     <li><a href="{{route('admin.products.create')}}">Ürün Ekle</a></li>
                     <li><a href="{{route('admin.contacts.index')}}">İletişim</a></li>
-                    <li><a href="#">İadeler</a></li>
-                    <li><a href="#">Kampanyalar</a></li>
+                    <li><a href="{{route('admin.returnproduct.index')}}">İadeler</a></li>
+                    <li><a href="{{route('admin.campaigns.index')}}">Kampanyalar</a></li>
                     <li><a href="{{route('admin.customerlist')}}">Müşteriler</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h2>İletişim</h2>
+                <h2 class="h2">İletişim</h2>
                 <p>Adres:Şanlıurfa/Merkez Türkiye</p>
                 <p>Telefon: 123-456-7890</p>
                 <p>E-posta:<a href="https://www.emo.org.tr/">www.emo.org.tr</a></p>
             </div>
             <div class="footer-column">
-                <h2>Hakkımızda</h2>
+                <h2 class="h2">Hakkımızda</h2>
                 <p>EMO Şirketi, oto yedek parça sektöründe uzmanlaşmış bir e-ticaret platformudur. Müşterilerimize kaliteli ve orijinal yedek parçaları uygun fiyatlarla sunmayı hedefliyoruz. Geniş ürün yelpazemiz ve güvenilir tedarikçi ağımız ile aradığınız parçaları kolayca bulmanızı sağlıyoruz. Müşteri memnuniyeti bizim önceliğimizdir ve her adımda müşterilerimize en iyi hizmeti sunmaya çalışıyoruz. </p>
             </div>
 
@@ -296,7 +309,7 @@
                 <div class="social-media">
                     <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.twitter.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/eness_bayrii/" class="social-icon"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linked.com/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>

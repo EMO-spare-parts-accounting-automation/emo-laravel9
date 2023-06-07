@@ -20,7 +20,7 @@ class Product extends Model
         'maras',
         'stock'
     ];
-    protected $table='products';
+    protected $table = 'products';
 
 
 }

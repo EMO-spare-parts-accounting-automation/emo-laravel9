@@ -14,35 +14,43 @@ class AdminReturnOrderController extends Controller
     {
         $this->middleware(['auth', 'role:admin']);
     }
+
     public function index()
     {
-        $returnOrders=ReturnOrder::all();
-        $hasReturnOrder=$returnOrders->isEmpty();
-        return view('admin.returnProduct.index',compact('returnOrders','hasReturnOrder'));
+        $returnOrders = ReturnOrder::all();
+        $hasReturnOrder = $returnOrders->isEmpty();
+        return view('admin.returnProduct.index', compact('returnOrders', 'hasReturnOrder'));
 
     }
-    public function completedReturn($id){
-        $returnOrders=ReturnOrder::query()->find($id);
-        $returnOrders->status='İade Tamamlandı';
+
+    public function completedReturn($id)
+    {
+        $returnOrders = ReturnOrder::query()->find($id);
+        $returnOrders->status = 'İade Tamamlandı';
         $returnOrders->save();
-        return redirect('admin/returnproduct/index')->with('completed','Belirtilen iade Tamamlandı');
+        return redirect('admin/returnproduct/index')->with('completed', 'Belirtilen iade Tamamlandı');
     }
-    public function startReturn($id){
-        $returnOrders=ReturnOrder::query()->find($id);
-        $returnOrders->status='İnceleniyor!';
-        $returnOrders->adminfeedback='Firma Talebinizi İncelemeye Aldı!';
+
+    public function startReturn($id)
+    {
+        $returnOrders = ReturnOrder::query()->find($id);
+        $returnOrders->status = 'İnceleniyor!';
+        $returnOrders->adminfeedback = 'Firma Talebinizi İncelemeye Aldı!';
         $returnOrders->save();
-        return redirect('admin/returnproduct/index')->with('start','Belirtilen iade talebi incelemeye alındı');
+        return redirect('admin/returnproduct/index')->with('start', 'Belirtilen iade talebi incelemeye alındı');
     }
+
     public function feedback($id)
     {
-        return view('admin.returnProduct.updateFeedback',compact('id'));
+        return view('admin.returnProduct.updateFeedback', compact('id'));
     }
-    public function store(Request $request,$id){
-        $returnOrders=ReturnOrder::query()->find($id);
-        $returnOrders->adminfeedback=$request->adminfeedback;
+
+    public function store(Request $request, $id)
+    {
+        $returnOrders = ReturnOrder::query()->find($id);
+        $returnOrders->adminfeedback = $request->adminfeedback;
         $returnOrders->save();
-        return redirect('admin/returnproduct/index')->with('feedback','Müşteri için geribildirim oluşturuldu!');
+        return redirect('admin/returnproduct/index')->with('feedback', 'Müşteri için geribildirim oluşturuldu!');
     }
 
 

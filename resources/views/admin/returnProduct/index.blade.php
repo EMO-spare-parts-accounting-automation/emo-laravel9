@@ -70,7 +70,8 @@
                                 @if($returnOrder['adminfeedback']=='Firma cevabı bekleniyor!')
                                     <a href="{{route('admin.returnproduct.startReturn',$returnOrder['id'])}}">
                                         <button style="background-color: #3e606f">
-                                            <span class="material-icons" style="color: white">playlist_add_check_circle</span>
+                                            <span class="material-icons"
+                                                  style="color: white">playlist_add_check_circle</span>
                                             <label style="color: white">İade Başlat</label>
                                         </button>
                                     </a>

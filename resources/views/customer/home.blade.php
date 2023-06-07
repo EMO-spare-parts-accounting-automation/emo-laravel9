@@ -3,23 +3,23 @@
 @extends('layouts.customer.customer')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Müşteri page') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <center><h1>SAYIN {{$user->name}} HOŞGELDİN!</h1></center>   <!--ismi ile karşılama mesajı-->
-                        {{ __('You are logged customer!') }}
-                    </div>
-                </div>
+    <center>
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
             </div>
-        </div>
-    </div>
+        @endif
+        <center><h1><label><b><strong>Her gün olduğu gibi bu günde bir adım daha ileriye!</strong></b></label> </h1></center>
+        <figure>
+            <img class="img-home" src="https://r.resimlink.com/hbqwK5i.jpeg" alt="">
+        </figure>
+        <center><h1><label>Hoşgeldin <b><strong style="font-family: Verdana;
+        -webkit-text-stroke: 1px black;color:red ">{{$user->name}}!</strong></b></label> </h1></center>
+        <center><h1><label><b>YETKİ:<strong style="font-family: Verdana;
+        -webkit-text-stroke: 1px black;color:red">
+                            MÜŞTERİ</strong></b></label> </h1></center>
+    </center>
+
+
+
 @endsection
