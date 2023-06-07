@@ -30,7 +30,8 @@ class AdminOrdersController extends Controller
     {
         $query = $request->orderSearch;
         $orders = Order::where('id', 'LIKE', '%' . $query . '%')
-            ->orWhere('userID', 'LIKE', '%' . $query . '%')
+            ->orWhere('userID', 'LIKE', $query )
+            ->orWhere('id', 'LIKE', $query)
             ->orWhere('status', 'LIKE', '%' . $query . '%')
             ->orderBy('orderDate', 'desc')
             ->get();

@@ -26,6 +26,7 @@ class CustomerController extends Controller
         $query = $request->search;
         $products = Product::where('name', 'LIKE', '%' . $query . '%')
             ->orWhere('brand', 'LIKE', '%' . $query . '%')
+            ->orWhere('id', 'LIKE', $query)
             ->get();
         $hasProduct = $products->isEmpty();
         return view('customer.products.index', compact('products', 'hasProduct'));

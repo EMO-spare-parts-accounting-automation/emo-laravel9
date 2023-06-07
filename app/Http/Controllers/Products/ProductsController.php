@@ -44,6 +44,7 @@ class ProductsController extends Controller
         $query = $request->search;
         $products = Product::where('name', 'LIKE', '%' . $query . '%')
             ->orWhere('brand', 'LIKE', '%' . $query . '%')
+            ->orWhere('id', 'LIKE', $query)
             ->get();
         $hasProduct = $products->isEmpty();
         return view('admin.products.index', compact('products', 'hasProduct'));
