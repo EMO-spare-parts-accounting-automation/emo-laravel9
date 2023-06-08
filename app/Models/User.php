@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'userType',                 #girenin admin mi müşteri mi diye kontrolü için tabloya userType sutunu eklendi
         'balance',
+        'address',
     ];
 
     /**

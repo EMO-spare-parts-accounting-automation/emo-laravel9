@@ -181,3 +181,18 @@ Route::prefix('admin/returnproduct')->group(function () {
 
     });
 });
+
+Route::prefix('/profile')->group(function () {
+    Route::controller(\App\Http\Controllers\ProfileController::class)->group(function () {
+        Route::get('/', 'index')->name('profile');
+        Route::get('edit','update')->name('update');
+        Route::get('editpassword','updatepassword')->name('updatepassword');
+        Route::get('editaddress','updateaddress')->name('updateaddress');
+        Route::post('/edit/editaddress', 'editaddress')->name('editaddress');
+        Route::post('/edit/editProfile', 'editProfile')->name('editProfile');
+        Route::post('/edit/editPassword', 'editPassword')->name('editPassword');
+
+    });
+});
+
+

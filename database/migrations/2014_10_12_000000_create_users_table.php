@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('userType')->default('customer');
             $table->integer('balance')->default(0);
+            $table->text('address')->default('Türkiye');
             $table->rememberToken();
             $table->timestamps();
         });
