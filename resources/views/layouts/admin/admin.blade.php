@@ -32,13 +32,15 @@
             font-family: 'Nunito', sans-serif;
 
         }
-        nav{
-            background: linear-gradient(bottom,#d1dbbd,#3e606f);
-            background: -moz-linear-gradient(bottom,#d1dbbd,#3e606f);
-            background: -webkit-linear-gradient(bottom,#d1dbbd,#3e606f);
+
+        nav {
+            background: linear-gradient(bottom, #d1dbbd, #3e606f);
+            background: -moz-linear-gradient(bottom, #d1dbbd, #3e606f);
+            background: -webkit-linear-gradient(bottom, #d1dbbd, #3e606f);
         }
+
         figure {
-            display:flex;
+            display: flex;
             position: center;
             display: flex;
             justify-content: center;
@@ -53,7 +55,8 @@
             object-fit: cover;
             object-position: 50% 15%;
         }
-        .img-home{
+
+        .img-home {
             width: 30%;
             height: 30%;
             border-radius: 50%;
@@ -70,105 +73,139 @@
 
 <div id="app">
     <ul class="nav nav-tabs">
-    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
-        <div class="container">
-            <figure>
-                <img class="img-emo" src="https://r.resimlink.com/hbqwK5i.jpeg" alt="">
-            </figure>
-            <a class="navbar-brand" href="{{ route('admin.products.index') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
-                Parça Ara
-            </a>
-            <a class="navbar-brand"  href="{{ route('admin.orders.index') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 30px;"></span><br>
-                Siparişler
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.products.create') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-plus" style="position: relative ;left: 30px;"></span><br>
-                Ürün Ekle
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.contacts.index') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
-                İletişim
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.returnproduct.index') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-refresh" style="position: relative ;left: 20px;"></span><br>
-                İadeler
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.campaigns.index') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-tags" style="position: relative ;left: 40px;"></span><br>
-                Kampanyalar
-            </a>
-            <a class="navbar-brand" href="{{ route('admin.customerlist') }}" style="position: relative ;bottom: 10px;">
-                <span class="glyphicon glyphicon-globe" style="position: relative ;left: 33px;"></span><br>
-                Müşteriler
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="container">
+                <figure>
+                    <img class="img-emo" src="https://r.resimlink.com/hbqwK5i.jpeg" alt="">
+                </figure>
+                <a class="navbar-brand" href="{{ route('admin.products.index') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-search" style="position: relative ;left: 30px;"></span><br>
+                    Parça Ara
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.orders.index') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-duplicate" style="position: relative ;left: 30px;"></span><br>
+                    Siparişler
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.products.create') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-plus" style="position: relative ;left: 30px;"></span><br>
+                    Ürün Ekle
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.contacts.index') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-envelope" style="position: relative ;left: 20px;"></span><br>
+                    İletişim
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.returnproduct.index') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-refresh" style="position: relative ;left: 20px;"></span><br>
+                    İadeler
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.campaigns.index') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-tags" style="position: relative ;left: 40px;"></span><br>
+                    Kampanyalar
+                </a>
+                <a class="navbar-brand" href="{{ route('admin.customerlist') }}"
+                   style="position: relative ;bottom: 10px;">
+                    <span class="glyphicon glyphicon-globe" style="position: relative ;left: 33px;"></span><br>
+                    Müşteriler
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
 
-        </div>
+            </div>
 
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position: relative;left: 15%;top: 5px">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"
+                 style="position: relative;left: 15%;top: 5px">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
 
-            </ul>
+                </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <span class="glyphicon glyphicon-user" style="position: relative ;"></span>
-                            {{ Auth::user()->name }}
-                        </a>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <div class="dropdown" style="position: relative;right: 20px">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="glyphicon glyphicon-user" style="position: relative ;"></span>
+                                {{ Auth::user()->name }}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li>
+                                    <a href="{{route('profile')}}">
+                                        <span style="position: relative;top: 5px" class="material-icons">
+                                            manage_accounts
+                                        </span>
+                                        Hesap
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                        <span class="material-icons" style="position: relative;top: 5px">logout</span>
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            </ul>
                         </div>
-                    </li>
+
                 @endguest
 
-        </div>
-    </nav>
+            </div>
+        </nav>
     </ul>
 
     <main class="py-4">
         @yield('content')
     </main>
 </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    $('.dropdown-toggle').dropdown()
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-
-
 
 
 <style>
@@ -177,6 +214,7 @@
         padding: 0;
         font-family: Arial, sans-serif;
     }
+
     header {
         background-color: #f2f2f2;
         padding: 20px;
@@ -301,7 +339,11 @@
             </div>
             <div class="footer-column">
                 <h2 class="h2">Hakkımızda</h2>
-                <p>EMO Şirketi, oto yedek parça sektöründe uzmanlaşmış bir e-ticaret platformudur. Müşterilerimize kaliteli ve orijinal yedek parçaları uygun fiyatlarla sunmayı hedefliyoruz. Geniş ürün yelpazemiz ve güvenilir tedarikçi ağımız ile aradığınız parçaları kolayca bulmanızı sağlıyoruz. Müşteri memnuniyeti bizim önceliğimizdir ve her adımda müşterilerimize en iyi hizmeti sunmaya çalışıyoruz. </p>
+                <p>EMO Şirketi, oto yedek parça sektöründe uzmanlaşmış bir e-ticaret platformudur. Müşterilerimize
+                    kaliteli ve orijinal yedek parçaları uygun fiyatlarla sunmayı hedefliyoruz. Geniş ürün yelpazemiz ve
+                    güvenilir tedarikçi ağımız ile aradığınız parçaları kolayca bulmanızı sağlıyoruz. Müşteri
+                    memnuniyeti bizim önceliğimizdir ve her adımda müşterilerimize en iyi hizmeti sunmaya
+                    çalışıyoruz. </p>
             </div>
 
 
@@ -309,7 +351,8 @@
                 <div class="social-media">
                     <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.twitter.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/eness_bayrii/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/eness_bayrii/" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
                     <a href="https://www.linked.com/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
