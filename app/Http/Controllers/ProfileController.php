@@ -41,11 +41,17 @@ class ProfileController extends Controller
         return redirect('profile')->with('UpdatedPassword','Şifreniz güncellendi');
 
     }
-    public function editaddress(Request $request){
+    public function editaddress(Request $request,$redirectControl){
         auth()->user()->update([
             'address' => $request->address
         ]);
-        return redirect('profile')->with('updatedAddress','Adres bilginiz güncellendi');
+        if($redirectControl==1){
+            return redirect('/customer/shopcart/index')->with('AddAddress','Adres bilginiz eklendi');
+        }
+        else{
+            return redirect('profile')->with('updatedAddress','Adres bilginiz güncellendi');
+        }
+
 
     }
 }

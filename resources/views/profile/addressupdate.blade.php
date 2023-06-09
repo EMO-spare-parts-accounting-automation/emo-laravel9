@@ -3,6 +3,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
     <style>
         *{
             margin: 0;
@@ -271,6 +275,20 @@
     </style>
 </head>
 <body>
+<?php
+    $redirectControl=0;
+?>
+@if(Session::has('AddAddress'))
+
+    <div class="alert alert-info">
+        {{ Session::get('AddAddress') }}
+    </div>
+
+    <?php
+        $redirectControl=1;
+    ?>
+
+@endif
 <div class="profile-card">
     <?php
     $user = Illuminate\Support\Facades\Auth::user();
@@ -295,15 +313,15 @@
             <a href="{{route('updatepassword')}}"><i class="fas fa-key"></i></a>
         </div>
 
-        <form action="{{ route('editaddress') }}" method="POST" >
-            <div class="div">
+        <form action="{{ route('editaddress',$redirectControl) }}" method="POST" >
+            <div class="div" style="width: 340px">
                 @csrf
                 <legend style="position: relative;bottom: 40px;"><b><strong>Adres:</strong></b></legend>
-                <label style="position: relative;bottom: 40px; for="address" class="col-md-4 col-form-label text-md-end">{{$user->address}}</label>
+                <label style="position: relative;bottom: 40px;" for="address" class="col-md-4 col-form-label text-md-end">{{$user->address}}</label>
                 <br>
                 <br>
                 <legend><b><strong>Güncel Adres:</strong></b></legend>
-                <textarea id="address" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="new-address"></textarea>
+                <textarea style="height: 110px" id="address" class="form-control @error('address') is-invalid @enderror" name="address" required autocomplete="new-address"></textarea>
 
                 @error('address')
                 <span class="invalid-feedback" role="alert">
