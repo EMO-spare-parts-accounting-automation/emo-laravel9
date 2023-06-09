@@ -29,6 +29,13 @@
         </div>
 
     @endif
+    @if(Session::has('AddAddress'))
+
+        <div class="alert alert-success">
+            {{ Session::get('AddAddress') }}
+        </div>
+
+    @endif
     @if(Session::has('deleteproduct'))
 
         <div class="alert alert-danger">

@@ -188,7 +188,7 @@ Route::prefix('/profile')->group(function () {
         Route::get('edit','update')->name('update');
         Route::get('editpassword','updatepassword')->name('updatepassword');
         Route::get('editaddress','updateaddress')->name('updateaddress');
-        Route::post('/edit/editaddress', 'editaddress')->name('editaddress');
+        Route::post('/edit/editaddress/{redirectControl}', 'editaddress')->name('editaddress');
         Route::post('/edit/editProfile', 'editProfile')->name('editProfile');
         Route::post('/edit/editPassword', 'editPassword')->name('editPassword');
 

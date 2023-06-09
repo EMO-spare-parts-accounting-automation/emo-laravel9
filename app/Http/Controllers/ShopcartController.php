@@ -118,6 +118,9 @@ class ShopcartController extends Controller
     public function deletecart($campaignCost)
     {
         $user = Auth::user();
+        if($user->address==='Türkiye'){
+             return redirect('profile/editaddress')->with('AddAddress','Lütfen Sipariş Oluşturmadan Önce Adresinizi Oluşturun');
+        }
         $takenProducts = Shopcart::where('userid', $user->id)
             ->get();
         foreach ($takenProducts as $takenProduct) {
