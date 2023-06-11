@@ -161,6 +161,12 @@
                                         Hesap
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{route('admin.balancehistory.index')}}">
+                                        <span style="position: relative;top: 5px" class="material-icons">account_balance</span>
+                                        Ödemeler
+                                    </a>
+                                </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

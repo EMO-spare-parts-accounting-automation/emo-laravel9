@@ -200,5 +200,11 @@ Route::prefix('customer/balancehistory')->group(function (){
         Route::get('/','index')->name('customer.balancehistory.index');
     });
 });
+Route::prefix('admin/balancehistory')->group(function (){
+    Route::controller(\App\Http\Controllers\AdminBalanceHistoryController::class)->group(function (){
+        Route::get('/','index')->name('admin.balancehistory.index');
+    });
+});
+
 
 
