@@ -287,7 +287,7 @@
                             </li>
                         @endif
                     @else
-                        <div class="dropdown" style="position: relative;right: 20px">
+                        <div class="dropdown" style="position: relative;right: 40px">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span class="glyphicon glyphicon-user" style="position: relative ;"></span>
@@ -300,6 +300,12 @@
                                             manage_accounts
                                         </span>
                                         Hesap
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('customer.balancehistory.index')}}">
+                                        <span style="position: relative;top: 5px" class="material-icons">account_balance</span>
+                                        Ödemelerim
                                     </a>
                                 </li>
                                 <li role="separator" class="divider"></li>
