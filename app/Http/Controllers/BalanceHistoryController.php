@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BalanceHistoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:customer']);
+    }
+
     public function index(){
         $user=Auth::user();
         $payments=BalaceHistory::where('userid',$user->id)->get();

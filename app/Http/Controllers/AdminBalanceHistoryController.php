@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminBalanceHistoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:admin']);
+    }
+
     public function index(){
         $payments=BalaceHistory::all();
         $hasPayments=$payments->isEmpty();
