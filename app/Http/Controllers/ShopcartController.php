@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\BalaceHistory;
 use App\Models\Campaign;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -11,6 +12,7 @@ use App\Models\Shopcart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Sodium\add;
 use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
 class ShopcartController extends Controller
@@ -161,7 +163,15 @@ class ShopcartController extends Controller
                 );
                 $product[0]->stock -= $takenProduct->productcount;
                 $product[0]->save();
+
             }
+            $addbalancehistory=new BalaceHistory();
+            $addbalancehistory->userid=$user->id;
+            $addbalancehistory->orderid=$orderid;
+            $addbalancehistory->payment=$cost*(-1);
+            $addbalancehistory->totalbalance=$user->balance;
+            $addbalancehistory->status='Alışveriş Harcaması';
+            $addbalancehistory->save();
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
         }
