@@ -95,9 +95,9 @@ class ShopcartController extends Controller
     public function createNewOrder($userId, $totalCost, $campaignCost)
     {
         $order = new Order();
-        $order->userId = $userId;
         $order->status = 'Kargoya verilmesi bekleniyor';
         $order->totalCost = $totalCost;
+        $order->userId = $userId;
         $order->discount = $campaignCost;
         $order->save();
         return $order->id;
@@ -106,22 +106,33 @@ class ShopcartController extends Controller
     public function createNewOrderDetail($userID, $orderID, $productId, $count, $productCost, $totalCost, $campaignCost)
     {
         $orderDetail = new OrderDetail();
-        $orderDetail->userId = $userID;
         $orderDetail->orderId = $orderID;
-        $orderDetail->productID = $productId;
+        $orderDetail->userId = $userID;
         $orderDetail->count = $count;
         $orderDetail->cost = $productCost;
-        $orderDetail->totalCost = $totalCost;
         $orderDetail->campaignCost = $campaignCost;
+        $orderDetail->totalCost = $totalCost;
+        $orderDetail->productID = $productId;
         $orderDetail->save();
 
+
+    }
+
+    function editStocks($product)
+    {
+        if ($product->stock == 0) {
+            $product->sanliurfa = 'yok';
+            $product->hatay = 'yok';
+            $product->maras = 'yok';
+            $product->save();
+        }
     }
 
     public function deletecart($campaignCost)
     {
         $user = Auth::user();
-        if($user->address==='Türkiye'){
-             return redirect('profile/editaddress')->with('AddAddress','Lütfen Sipariş Oluşturmadan Önce Adresinizi Oluşturun');
+        if ($user->address === 'Türkiye') {
+            return redirect('profile/editaddress')->with('AddAddress', 'Lütfen Sipariş Oluşturmadan Önce Adresinizi Oluşturun');
         }
         $takenProducts = Shopcart::where('userid', $user->id)
             ->get();
@@ -138,7 +149,7 @@ class ShopcartController extends Controller
         if ($user->balance >= $cost) {
             $user->balance -= $cost;
             $user->save();
-            $orderid = $this->createNewOrder($user->id, $cost, $campaignCost);  //hem yeni bir order oluşturdum hem de id sini aldım
+            $orderid = $this->createNewOrder($user->id, $cost, $campaignCost);  //hem yeni bir order oluşturdum hem de id sini almış oldum
             foreach ($takenProducts as $takenProduct) {
                 $this->campaignCost = 0;
                 $campaingProduct = Campaign::where('productid', $takenProduct->productid)->get();
@@ -152,7 +163,8 @@ class ShopcartController extends Controller
                     }
                 }
 
-                $product = Product::where('id', $takenProduct->productid)->get();
+                $product = Product::where('id', $takenProduct->productid)
+                    ->get();
                 $this->createNewOrderDetail(userID: $user->id,
                     orderID: $orderid,
                     productId: $takenProduct->productid,
@@ -162,15 +174,16 @@ class ShopcartController extends Controller
                     campaignCost: $this->campaignCost,
                 );
                 $product[0]->stock -= $takenProduct->productcount;
+                $this->editStocks(product: $product[0]);
                 $product[0]->save();
 
             }
-            $addbalancehistory=new BalaceHistory();
-            $addbalancehistory->userid=$user->id;
-            $addbalancehistory->orderid=$orderid;
-            $addbalancehistory->payment=$cost*(-1);
-            $addbalancehistory->totalbalance=$user->balance;
-            $addbalancehistory->status='Alışveriş Harcaması';
+            $addbalancehistory = new BalaceHistory();
+            $addbalancehistory->userid = $user->id;
+            $addbalancehistory->orderid = $orderid;
+            $addbalancehistory->payment = $cost * (-1);
+            $addbalancehistory->totalbalance = $user->balance;
+            $addbalancehistory->status = 'Alışveriş Harcaması';
             $addbalancehistory->save();
             Shopcart::where('userid', 'LIKE', $user->id)->delete();
             return redirect('customer/products/index')->with('deletecart', 'Sepetinizi Onayladınız! *Siparişiniz Alınmıştır!*');
@@ -328,4 +341,6 @@ class ShopcartController extends Controller
             ->delete();
         return redirect('customer/shopcart/index')->with('deleteproduct', 'Seçilen sepetinizden ürün silinmiştir!');
     }
+
+
 }
