@@ -25,7 +25,6 @@ class ReturnOrdersController extends Controller
         $user = Auth::user();
         $returnOrders = ReturnOrder::where('userid', $user->id)->get();
         $hasReturnOrder = $returnOrders->isEmpty();
-
         return view('customer.returnProduct.index', compact('returnOrders', 'hasReturnOrder'));
 
     }
