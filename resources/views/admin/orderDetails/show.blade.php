@@ -13,6 +13,13 @@
                 <option value="Teslim edildi">Teslim edildi</option>
             </select>
         </form>
+
+    </div>
+    <div style="display: flex">
+
+
+
+    <h3><label style="position: relative;left: 150px;">{{$user->address}}</label></h3>
     </div>
     <script>
         function submitForm() {
@@ -31,7 +38,8 @@
             <h3>
                 <label style="position: relative;bottom: 140px;right: 20px">{{$user->id}}-{{$user->name}}</label><br>
             </h3>
-            <h3><label style="position: relative;bottom: 160px;">{{$user->email}}</label></h3>
+            <h3><label style="position: relative;bottom: 160px;">{{$user->email}}</label></h3><br>
+
 
         </div>
         <table border="1" style=" width: 1300px">
