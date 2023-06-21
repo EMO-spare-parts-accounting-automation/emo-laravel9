@@ -21,22 +21,52 @@
             <br>
             <table style="width: 1300px">
                 <tr>
-                    <td bgcolor="#303030" style="padding: 5px;margin: 5px">><label style="color: white">ID</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Marka</label></td>
-                    <td bgcolor="#303030">><label style="color: white">İsim</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Fiyat</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Urfa</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Hatay</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Maras</label></td>
-                    <td bgcolor="#303030">><label style="color: white">Stok</label></td>
+                    <td bgcolor="#303030" style="padding: 5px;margin: 5px"><label style="color: white">ID</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Marka</label></td>
+                    <td bgcolor="#303030"><label style="color: white">İsim</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Görsel</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Fiyat</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Urfa</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Hatay</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Maras</label></td>
+                    <td bgcolor="#303030"><label style="color: white">Stok</label></td>
 
                 </tr>
+                <?php
+                    $sayac=0;
+                ?>
 
                 @foreach($products as $product)
                     <tr>
                         <td style="padding: 15px;margin: 15px">{{$product['id']}}</td>
                         <td>{{$product['brand']}}</td>
                         <td>{{$product['name']}}</td>
+                        <td>
+                                <?php
+                                $image=\App\Models\Image::where('productid',$product['id'])->get();
+                                ?>
+                            @if($image->isEmpty())
+                                <span class="material-icons" style="color: grey;">image_search</span>
+                            @else
+                                <a class="myBtn" href="#" onclick="imagescript({{$sayac}})">
+                                    <div>
+                                        <span class="material-icons" style="color: blue">image_search</span>
+                                    </div>
+                                </a>
+                                <div id="myModal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p><legend>Parça Görseli: {{$product['id']}}</legend> </p>
+                                        <center><img style="height: 80%;object-fit: contain" src="/uploads/{{$product['id']}}.jpg"></center>
+                                    </div>
+                                </div>
+
+                                    <?php
+                                    $sayac+=1;
+                                    ?>
+                            @endif
+
+                        </td>
                         <td>{{$product['listCost']}}</td>
                         <td>@if($product['sanliurfa']=='var')
                                 <i style="color: green" class='bi bi-check-circle-fill'></i>
