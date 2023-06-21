@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use function Webmozart\Assert\Tests\StaticAnalysis\null;
 
 
 class ProductsController extends Controller
@@ -69,6 +71,14 @@ class ProductsController extends Controller
         $product->listCost = $product->costKdV * 1.10;
         $product->stock = $request->stock;
         $product->save();
+        $id=$product->id;
+        if($request->file('img')!=null){
+            $image=new Image();
+            $image->productid=$id;
+            $request->img->move(public_path('uploads'), $id.'.jpg');
+            $image->imagepath=public_path('uploads/').$id.'.jpg';
+            $image->save();
+        }
         return redirect('admin/products/index');
     }
 
@@ -115,6 +125,20 @@ class ProductsController extends Controller
         $product->listCost = $product->costKdV * 1.10;
         $product->stock = $request->stock;
         $product->save();
+        $id=$product->id;
+        if($request->file('img')!=null){
+            $image=Image::where('productid',$product->id)->get();
+            if($image->isEmpty()){
+                $img=new Image();
+                $img->productid=$id;
+                $request->img->move(public_path('uploads'), $id.'.jpg');
+                $img->imagepath=public_path('uploads/').$id.'.jpg';
+                $img->save();
+            }else{
+                $request->img->move(public_path('uploads'), $id.'.jpg');
+            }
+
+        }
         return redirect('admin/products/index');
     }
 

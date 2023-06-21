@@ -6,7 +6,7 @@
 
                 <div class="card-body" style="padding-left: 150px">
                     <div class="form">
-                        <form action="{{$route}}" method="POST">
+                        <form action="{{$route}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method($method)
                             <div class="row mb-3">
@@ -86,6 +86,14 @@
                                     <div class="col-md-9">
                                         <input type="text" value="{{$stok}}" class="form-control" name="stock"
                                                placeholder="Stok" maxlength="15" autofous required>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="row mb-3" >
+                                <fieldset>
+                                    <label class="col-md-4 col-form-label">Ürün Görseli: </label><br>
+                                    <div class="col-md-9">
+                                        <input class="btn btn-light" type="file" name="img" alt="img" >
                                     </div>
                                 </fieldset>
                             </div>

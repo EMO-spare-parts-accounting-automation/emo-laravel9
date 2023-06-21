@@ -34,6 +34,41 @@
             font-family: 'Nunito', sans-serif;
 
         }
+        .modal {
+            display: none; /* Varsayılan olarak gizlidir */
+            position: fixed; /* Yerinde kal */
+            z-index: 1; /* Üstte */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ful Genişlik */
+            height: 100%; /* Ful Yükseklik */
+            overflow: auto; /* Gerekirse kaydırmayı etkinleştir */
+            background-color: rgb(0,0,0); /* Yedek renk */
+            background-color: rgba(0,0,0,0.4); /* Siyah w / opaklık */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* % 15 üstten ve ortalanmış */
+            padding: 20px;
+            border: 1px solid #888;
+            height: 80%;
+            width: 80%; /* Ekran boyutuna bağlı olarak daha fazla veya daha az olabilir */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
         nav {
             background: linear-gradient(bottom, #d1dbbd, #3e606f);
@@ -334,6 +369,26 @@
         @yield('content')
     </main>
 </div>
+<script>
+    function imagescript(a){
+        var modal = document.getElementsByClassName('modal')[a];
+        var btn = document.getElementsByClassName("myBtn")[a];
+        var span = document.getElementsByClassName("close")[a];
+
+
+        modal.style.display = "block";
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+</script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
         crossorigin="anonymous"></script>
@@ -457,7 +512,6 @@
 
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
