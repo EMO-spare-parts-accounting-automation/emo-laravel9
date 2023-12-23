@@ -56,5 +56,27 @@
 
 <br><hr><br>
 <p align="center">
-    <img src="public/uploads/project_ui/1.png" style="border-radius: 10px;margin:10px;width: 300px">
+    <img src="public/uploads/project_ui/1.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/1.1.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/2.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/3.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/4.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/5.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/6.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/7.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/8.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/9.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/10.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/11.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/12.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/13.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/14.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/15.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/16.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/17.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/18.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+    <img src="public/uploads/project_ui/19.png" style="border-radius: 10px;margin:10px;width: 600px"><br>
+
+
+
 </p>
